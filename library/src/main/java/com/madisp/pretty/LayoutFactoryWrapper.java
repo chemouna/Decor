@@ -39,7 +39,10 @@ public abstract class LayoutFactoryWrapper implements LayoutInflater.Factory2 {
 			// construct a view the same way that android does it
 			for (String prefix : CLASS_PREFIX_LIST) {
 				try {
-					inflater.createView(name, prefix, attrs);
+					v = inflater.createView(name, prefix, attrs);
+					if (v != null) {
+						break;
+					}
 				} catch (ClassNotFoundException ignored) {
 					// let v be null, this means that we don't know how to inflate this view
 				}
