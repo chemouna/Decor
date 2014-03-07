@@ -50,13 +50,15 @@ public abstract class AttrsDecor<T extends View> implements Decor {
 	 * Attributes supported by this decorator.
 	 * @return a non-null array of android attr resource ids.
 	 */
-	@NotNull abstract int[] attrs();
+	@NotNull
+	protected abstract int[] attrs();
 
 	/**
 	 * The class for the given viewtype. Please be kind and just return the right class here :)
 	 * @return The class/typetoken for T
 	 */
-	@NotNull abstract Class<T> clazz();
+	@NotNull
+	protected abstract Class<T> clazz();
 
 	/**
 	 * This method will be called if a View of type T was inflated and it had one of the attributes
@@ -65,5 +67,5 @@ public abstract class AttrsDecor<T extends View> implements Decor {
 	 * @param attr The attribute resource id (key).
 	 * @param value The attribute value.
 	 */
-	abstract void apply(T view, int attr, TypedValue value);
+	protected abstract void apply(T view, int attr, TypedValue value);
 }
