@@ -18,12 +18,12 @@
         android:layout_height="wrap_content"
         android:text="Hi, I'm a TextView with a different font"
         android:layout_marginBottom="8dp"
-        auto:fontAsset="Ubuntu-M.ttf" />
+        auto:typeface_asset="Ubuntu-M.ttf" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="And I'm a Button"
-        auto:fontAsset="Ubuntu-M.ttf" />
+        auto:typeface_asset="Ubuntu-M.ttf" />
 
 </LinearLayout>

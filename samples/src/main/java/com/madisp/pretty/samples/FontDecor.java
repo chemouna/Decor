@@ -12,7 +12,7 @@ public class FontDecor extends AttrsDecor<TextView> {
 	@NotNull
 	@Override
 	protected int[] attrs() {
-		return new int[] { R.attr.fontAsset };
+		return new int[] { R.attr.typeface_asset };
 	}
 
 	@NotNull

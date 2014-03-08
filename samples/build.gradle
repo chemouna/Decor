@@ -25,4 +25,8 @@ android {
         minSdkVersion 11
         targetSdkVersion 19
     }
+
+    lintOptions {
+        disable 'MissingPrefix'
+    }
 }
