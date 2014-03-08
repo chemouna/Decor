@@ -136,7 +136,7 @@ Currently using attributes with the auto prefix for system widgets raises a lint
 error *Unexpected namespace prefix "auto" found for tag T*. Fear not, this is a
 red herring. The solution is to suppress that check in your gradle buildfile:
 
-```java
+```groovy
 android {
   lintOptions {
     disable 'MissingPrefix'
