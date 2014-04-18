@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     compile 'com.madisp.pretty:pretty:0.1.0-SNAPSHOT'
+    compile 'com.android.support:support-v4:19.1.0'
 }
 
 android {

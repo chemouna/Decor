@@ -1,11 +1,11 @@
 package com.madisp.pretty.samples;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 import com.madisp.pretty.Pretty;
 
-public class SampleActivity extends Activity {
+public class SampleActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

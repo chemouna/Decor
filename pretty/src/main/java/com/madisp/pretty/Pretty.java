@@ -16,8 +16,22 @@ public class Pretty {
 
 	private Pretty(@NotNull Activity activity) {
 		LayoutInflater inflater = activity.getLayoutInflater();
-		LayoutInflater.Factory2 factory = inflater.getFactory2();
-		inflater.setFactory2(new PrettyLayoutFactory(inflater, factory, this));
+		if (inflater.getFactory2() != null) {
+			throw new IllegalStateException(
+					"Trying to Pretty.wrap an activity that already has a layoutinflater factory " +
+					"set. Try calling Pretty.wrap before super.onCreate, especially if you're " +
+					"using SupportFragmentActivity/FragmentActivity.");
+		}
+		LayoutInflater.Factory2 wrappedFactory = null;
+		// if the activity is a FragmentActivity from the support lib then lets wrap it
+		// so the <fragment> tags still work
+		try {
+			Class<?> fragAct = Class.forName("android.support.v4.app.FragmentActivity");
+			if (fragAct != null && fragAct.isInstance(activity)) {
+				wrappedFactory = activity;
+			}
+		} catch (Exception _) { /* ignored */ }
+		inflater.setFactory2(new PrettyLayoutFactory(inflater, wrappedFactory, this));
 	}
 
 	/**
