@@ -1,7 +1,10 @@
 package com.madisp.pretty;
 
 import android.app.Activity;
+import android.content.Context;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -14,9 +17,9 @@ import java.util.Collection;
 public class Pretty {
 	private final Collection<Decor> decors = new ArrayList<Decor>();
 
-	private Pretty(@NotNull Activity activity) {
+	private Pretty(@NotNull final Activity activity) {
 		LayoutInflater inflater = activity.getLayoutInflater();
-		if (inflater.getFactory2() != null) {
+		if (inflater.getFactory2() != null || inflater.getFactory() != null) {
 			throw new IllegalStateException(
 					"Trying to Pretty.wrap an activity that already has a layoutinflater factory " +
 					"set. Try calling Pretty.wrap before super.onCreate, especially if you're " +
@@ -28,7 +31,18 @@ public class Pretty {
 		try {
 			Class<?> fragAct = Class.forName("android.support.v4.app.FragmentActivity");
 			if (fragAct != null && fragAct.isInstance(activity)) {
-				wrappedFactory = activity;
+				// FragmentActivity is a Factory1, not Factory2
+				wrappedFactory = new LayoutInflater.Factory2() {
+					@Override
+					public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
+						return onCreateView(name, context, attrs);
+					}
+
+					@Override
+					public View onCreateView(String name, Context context, AttributeSet attrs) {
+						return activity.onCreateView(name, context, attrs);
+					}
+				};
 			}
 		} catch (Exception _) { /* ignored */ }
 		inflater.setFactory2(new PrettyLayoutFactory(inflater, wrappedFactory, this));

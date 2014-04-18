@@ -11,14 +11,12 @@ apply plugin: 'android'
 
 repositories {
     mavenCentral()
-    maven {
-        name 'snapshots'
-        url 'https://oss.sonatype.org/content/repositories/snapshots'
-    }
 }
 
 dependencies {
-    compile 'com.madisp.pretty:pretty:0.1.0-SNAPSHOT'
+    compile project(':pretty')
+    // in reality you would use something like this instead of refing the project directly:
+//    compile 'com.madisp.pretty:pretty:0.1.0'
     compile 'com.android.support:support-v4:19.1.0'
 }
 

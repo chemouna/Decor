@@ -8,8 +8,8 @@ import com.madisp.pretty.Pretty;
 public class SampleActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Pretty.wrap(this).with(new FontDecor());
 		super.onCreate(savedInstanceState);
-		Pretty.wrap(this).apply(new FontDecor());
 		setContentView(R.layout.main);
 	}
 }
