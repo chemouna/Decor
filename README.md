@@ -112,7 +112,7 @@ public class SampleActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Pretty.wrap(this).apply(new FontDecor());
+		Pretty.wrap(this).with(new FontDecor());
 		setContentView(R.layout.main);
 	}
 }
