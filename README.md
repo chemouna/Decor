@@ -111,8 +111,8 @@ register our new shiny decorator.
 public class SampleActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		Pretty.wrap(this).with(new FontDecor());
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 	}
 }
