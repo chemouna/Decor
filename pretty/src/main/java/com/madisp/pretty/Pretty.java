@@ -23,7 +23,7 @@ public class Pretty {
 	/**
 	 * "Infect" a LayoutInflater in an Activity with a new Pretty instance.
 	 * @param activity activity whose LayoutInflater to mangle
-	 * @return An instance of Pretty, see {@link com.madisp.pretty.Pretty#apply(Decor)}
+	 * @return An instance of Pretty, see {@link com.madisp.pretty.Pretty#with(Decor)}
 	 */
 	@NotNull
 	public static Pretty wrap(@NotNull Activity activity) {
@@ -34,10 +34,10 @@ public class Pretty {
 	/**
 	 * Add a decorator to the filter chain.
 	 * @param decor The decorator to add
-	 * @return Pretty instance used, allows one to chain multiple apply calls.
+	 * @return Pretty instance used, allows one to chain multiple with calls.
 	 */
 	@NotNull
-	public Pretty apply(@NotNull Decor decor) {
+	public Pretty with(@NotNull Decor decor) {
 		decors.add(decor);
 		return this;
 	}
