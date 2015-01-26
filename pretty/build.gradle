@@ -10,12 +10,12 @@ apply plugin: 'maven-publish'
 // general project info
 
 group = 'com.madisp.pretty'
-version = '0.1.0'
+version = '0.1.1'
 if (!project.hasProperty('release')) {
     version = version + '-SNAPSHOT'
 }
 project.sourceCompatibility = '1.6'
-tasks.withType(Compile) { options.encoding = 'UTF-8' }
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
 
 repositories {
     mavenCentral()
