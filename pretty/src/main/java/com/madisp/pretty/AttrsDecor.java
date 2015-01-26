@@ -18,54 +18,54 @@ import org.jetbrains.annotations.Nullable;
  * @param <T> The type or parent type of View that this decorator applies to.
  */
 public abstract class AttrsDecor<T extends View> implements Decor {
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public final void apply(@NotNull View view, @Nullable View parent, @NotNull String name, @NotNull Context context, @NotNull AttributeSet attrs) {
-		if (!clazz().isAssignableFrom(view.getClass())) {
-			return;
-		}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public final void apply(@NotNull View view, @Nullable View parent, @NotNull String name, @NotNull Context context, @NotNull AttributeSet attrs) {
+        if (!clazz().isAssignableFrom(view.getClass())) {
+            return;
+        }
 
-		TypedArray values = context.getResources().obtainAttributes(attrs, attrs());
-		if (values == null) {
-			return;
-		}
+        TypedArray values = context.getResources().obtainAttributes(attrs, attrs());
+        if (values == null) {
+            return;
+        }
 
-		TypedValue buf = new TypedValue();
-		try {
-			for (int i = 0; i < values.length(); i++) {
-				if (values.hasValue(i) && values.getValue(i, buf)) {
-					// inspection disabled as we do know at this point that view can be cast to T
-					//noinspection unchecked
-					apply((T)view, attrs()[i], buf);
-				}
-			}
-		} finally {
-			values.recycle();
-		}
-	}
+        TypedValue buf = new TypedValue();
+        try {
+            for (int i = 0; i < values.length(); i++) {
+                if (values.hasValue(i) && values.getValue(i, buf)) {
+                    // inspection disabled as we do know at this point that view can be cast to T
+                    //noinspection unchecked
+                    apply((T)view, attrs()[i], buf);
+                }
+            }
+        } finally {
+            values.recycle();
+        }
+    }
 
-	/**
-	 * Attributes supported by this decorator.
-	 * @return a non-null array of android attr resource ids.
-	 */
-	@NotNull
-	protected abstract int[] attrs();
+    /**
+     * Attributes supported by this decorator.
+     * @return a non-null array of android attr resource ids.
+     */
+    @NotNull
+    protected abstract int[] attrs();
 
-	/**
-	 * The class for the given viewtype. Please be kind and just return the right class here :)
-	 * @return The class/typetoken for T
-	 */
-	@NotNull
-	protected abstract Class<T> clazz();
+    /**
+     * The class for the given viewtype. Please be kind and just return the right class here :)
+     * @return The class/typetoken for T
+     */
+    @NotNull
+    protected abstract Class<T> clazz();
 
-	/**
-	 * This method will be called if a View of type T was inflated and it had one of the attributes
-	 * specified by {@link AttrsDecor#attrs()} set.
-	 * @param view The view object that is being decorated.
-	 * @param attr The attribute resource id (key).
-	 * @param value The attribute value.
-	 */
-	protected abstract void apply(T view, int attr, TypedValue value);
+    /**
+     * This method will be called if a View of type T was inflated and it had one of the attributes
+     * specified by {@link AttrsDecor#attrs()} set.
+     * @param view The view object that is being decorated.
+     * @param attr The attribute resource id (key).
+     * @param value The attribute value.
+     */
+    protected abstract void apply(T view, int attr, TypedValue value);
 }
