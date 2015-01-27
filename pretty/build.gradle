@@ -14,6 +14,7 @@ version = '0.1.1'
 if (!project.hasProperty('release')) {
     version = version + '-SNAPSHOT'
 }
+
 project.sourceCompatibility = '1.6'
 tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
 
@@ -21,9 +22,17 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    provided
+}
+
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
 dependencies {
     compile 'org.jetbrains:annotations:13.0'
-    compile('org.robolectric:android-all:5.0.0_r2-robolectric-0') { transitive = false }
+    provided('org.robolectric:android-all:5.0.0_r2-robolectric-0') { transitive = false }
 }
 
 // jar with sources
