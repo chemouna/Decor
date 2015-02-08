@@ -31,8 +31,12 @@ sourceSets {
 }
 
 dependencies {
+    repositories {
+        mavenCentral()
+    }
     compile 'org.jetbrains:annotations:13.0'
-    provided('org.robolectric:android-all:5.0.0_r2-robolectric-0') { transitive = false }
+    provided 'com.google.android:android:5.0.0'
+    provided('org.robolectric:android-all:5.+') { transitive = false }
 }
 
 // jar with sources
@@ -51,7 +55,7 @@ task javadocJar(type: Jar, dependsOn: javadocs) {
     from javadocs.destinationDir
 }
 
-publishing {
+/*publishing {
     repositories {
         maven {
             name 'dry'
@@ -118,4 +122,4 @@ publishing {
             }
         }
     }
-}
+}*/
