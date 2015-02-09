@@ -8,7 +8,8 @@ import com.madisp.pretty.Pretty;
 public class SampleActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Pretty.wrap(this).with(new FontDecor());
+        Pretty.wrap(this).with(new FontDecor()).with(new ErrorDecor());//not sure of adding ErrorDecor right away ?
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }

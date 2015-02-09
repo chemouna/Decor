@@ -35,7 +35,7 @@ sourceSets {
 
 dependencies {
     compile 'org.jetbrains:annotations:13.0'
-    compile 'com.google.android:android:4.1.1.4'
+    compile 'com.google.android:android:4.1.1.4' //TODO: find a way to use provided instead of compile for android dep
     //provided 'com.google.android:android:4.1.1.4'
     provided('org.robolectric:android-all:5.0.0_r2-robolectric-0') { transitive = false }
 }
