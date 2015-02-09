@@ -14,7 +14,9 @@ repositories {
 }
 
 dependencies {
-    compile project(':pretty')
+    compile(project(':pretty')) {
+        exclude module: 'android'
+    }
     // in reality you would use something like this instead of refing the project directly:
 //    compile 'com.madisp.pretty:pretty:0.1.0'
     compile 'com.android.support:support-v4:21.0.3'
@@ -25,7 +27,7 @@ android {
     buildToolsVersion '21.1.2'
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 21
     }
 

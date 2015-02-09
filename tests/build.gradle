@@ -14,7 +14,9 @@ repositories {
 }
 
 dependencies {
-    compile project(':pretty')
+    compile(project(':pretty')) {
+        exclude module: 'android'
+    }
 }
 
 android {
@@ -22,7 +24,7 @@ android {
     buildToolsVersion '21.1.2'
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 21
     }
 
