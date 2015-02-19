@@ -13,14 +13,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile(project(':pretty')) {
-        exclude module: 'android'
-    }
-    // in reality you would use something like this instead of refing the project directly:
-//    compile 'com.madisp.pretty:pretty:0.1.0'
-    compile 'com.android.support:support-v4:21.0.3'
-}
 
 android {
     compileSdkVersion 21
@@ -34,4 +26,13 @@ android {
     lintOptions {
         disable 'MissingPrefix'
     }
+}
+
+dependencies {
+    compile(project(':pretty')) {
+        exclude module: 'android'
+    }
+    // in reality you would use something like this instead of refing the project directly:
+    // compile 'com.madisp.pretty:pretty:0.1.0'
+    compile 'com.android.support:support-v4:21.0.3'
 }

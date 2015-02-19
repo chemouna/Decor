@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:auto="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:padding="16dp">
 
     <TextView
@@ -13,19 +13,26 @@
         android:text="Hi, I'm a TextView"
         android:layout_marginBottom="8dp" />
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hi, I'm a TextView with a different font"
         android:layout_marginBottom="8dp"
-        auto:typeface_asset="Ubuntu-M.ttf"
-        auto:error_text="Error inside a textview"
-        auto:error_icon="@drawable/ic_launcher"/>
+        app:typeface_asset="Ubuntu-M.ttf"
+        app:error_text="Error inside a textview"
+        app:error_icon="@drawable/ic_launcher" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="And I'm a Button"
-        auto:typeface_asset="Ubuntu-M.ttf" />
+        app:typeface_asset="Ubuntu-M.ttf" />
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/photo1"
+        app:onTouch="onIvTouch"/>
 
 </LinearLayout>

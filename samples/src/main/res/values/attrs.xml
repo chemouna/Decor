@@ -3,4 +3,7 @@
     <attr name="typeface_asset" format="string" />
     <attr name="error_text" format="string" />
     <attr name="error_icon" format="reference" />
+    <attr name="round" format="boolean" />
+    <attr name="roundDrawable" format="reference" />
+    <attr name="onTouch" />
 </resources>
