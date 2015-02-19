@@ -45,22 +45,6 @@ public class ErrorDecor extends AttrsDecor<EditText> {
         //}
     }
 
-    public class Attrs {
-        private final Context context;
-
-        public Attrs(Context context) {
-            this.context = context;
-        }
-
-        @SuppressWarnings("ConstantConditions")
-        public int resourceId(int attrId) {
-            TypedValue typedValue = new TypedValue();
-            context.getTheme().resolveAttribute(attrId, typedValue, true);
-            return typedValue.resourceId;
-        }
-
-    }
-
 }
 
 /*

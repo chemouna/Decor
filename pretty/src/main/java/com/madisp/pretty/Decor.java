@@ -1,5 +1,6 @@
 package com.madisp.pretty;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -23,4 +24,5 @@ public interface Decor {
      * @param attrs A read-only set of tag attributes.
      */
     public void apply(@NotNull View view, @Nullable View parent, @NotNull String name, @NotNull Context context, @NotNull AttributeSet attrs);
+
 }

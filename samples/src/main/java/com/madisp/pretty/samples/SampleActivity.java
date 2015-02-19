@@ -9,14 +9,15 @@ import com.madisp.pretty.Pretty;
 public class SampleActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Pretty.wrap(this).with(new FontDecor()).with(new onTouchDecor()).with(new ErrorDecor());
+        Pretty pretty = Pretty.wrap(this).with(new FontDecor()).with(new ErrorDecor());
+        pretty.with(new onTouchDecor(this));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }
 
     public void onIvTouch() {
-       Log.i("TEST", " onIvTouch called on touch ");
+       Log.i("TEST", " onIvTouch (from activity) called on touch ");
     }
 
 }

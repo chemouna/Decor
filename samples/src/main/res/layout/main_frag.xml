@@ -20,7 +20,7 @@
         android:layout_marginBottom="8dp"
         app:typeface_asset="Ubuntu-M.ttf"
         app:error_text="Error inside a textview"
-        app:error_icon="@drawable/ic_launcher" />
+        app:error_icon="@drawable/ic_error_et" />
 
     <Button
         android:layout_width="match_parent"

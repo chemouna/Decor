@@ -1,5 +1,6 @@
 package com.madisp.pretty.samples;
 
+import android.app.Activity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -17,6 +18,12 @@ import java.lang.reflect.Method;
  */
 public class onTouchDecor extends AttrsDecor<View> {
 
+    private Activity mContainerActivity;
+
+    public onTouchDecor(Activity activity) {
+        mContainerActivity = activity;
+    }
+
     @NotNull
     @Override
     protected int[] attrs() {
@@ -31,21 +38,29 @@ public class onTouchDecor extends AttrsDecor<View> {
 
     @Override
     protected void apply(final View view, int attr, final TypedValue value) {
+        Log.i("TEST", " apply called ");
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Log.i("TEST", " onTouch called with value.string =" + value.string);
                 Method mHandler = null;
-                Log.i("TEST", " value.string = " + value.string);
                 try {
-                    mHandler = v.getContext().getClass().getMethod(value.string.toString(),
-                            View.class);
+                    if(mContainerActivity != null) {
+                        //we need to search for this method in activity not in view itself
+                        /*mHandler = v.getContext().getClass().getMethod(value.string.toString(),
+                                mContainerActivity.getClass());*/
+                        Log.i("TEST", " -> trying to get handler for "+ value.string);
+                        mHandler = mContainerActivity.getClass().getMethod(value.string.toString());
+                    }
                 } catch (NoSuchMethodException e) {
                     e.printStackTrace();
                 }
 
                 if (mHandler == null) return false;
                 try {
-                    mHandler.invoke(v.getContext(), view.getClass());//not sure that view.getClass() does correctly replace View.this
+                    //mHandler.invoke(v.getContext(), view.getClass());//not sure that view.getClass() does correctly replace View.this
+                    Log.i("TEST", " -> invoking "+ value.string + " method");
+                    mHandler.invoke(mContainerActivity);
                     return true;
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();

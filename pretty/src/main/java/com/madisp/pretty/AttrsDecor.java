@@ -1,5 +1,6 @@
 package com.madisp.pretty;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -18,6 +19,7 @@ import org.jetbrains.annotations.Nullable;
  * @param <T> The type or parent type of View that this decorator applies to.
  */
 public abstract class AttrsDecor<T extends View> implements Decor {
+
     /**
      * {@inheritDoc}
      */
@@ -38,7 +40,7 @@ public abstract class AttrsDecor<T extends View> implements Decor {
                 if (values.hasValue(i) && values.getValue(i, buf)) {
                     // inspection disabled as we do know at this point that view can be cast to T
                     //noinspection unchecked
-                    apply((T)view, attrs()[i], buf);
+                    apply((T) view, attrs()[i], buf);
                 }
             }
         } finally {
@@ -48,6 +50,7 @@ public abstract class AttrsDecor<T extends View> implements Decor {
 
     /**
      * Attributes supported by this decorator.
+     *
      * @return a non-null array of android attr resource ids.
      */
     @NotNull
@@ -55,6 +58,7 @@ public abstract class AttrsDecor<T extends View> implements Decor {
 
     /**
      * The class for the given viewtype. Please be kind and just return the right class here :)
+     *
      * @return The class/typetoken for T
      */
     @NotNull
@@ -63,9 +67,11 @@ public abstract class AttrsDecor<T extends View> implements Decor {
     /**
      * This method will be called if a View of type T was inflated and it had one of the attributes
      * specified by {@link AttrsDecor#attrs()} set.
-     * @param view The view object that is being decorated.
-     * @param attr The attribute resource id (key).
+     *
+     * @param view  The view object that is being decorated.
+     * @param attr  The attribute resource id (key).
      * @param value The attribute value.
      */
     protected abstract void apply(T view, int attr, TypedValue value);
+
 }
