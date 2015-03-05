@@ -2,10 +2,9 @@ package com.madisp.pretty.samples;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
+import android.support.annotation.NonNull;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.TypedValue;
 import android.widget.ImageView;
 
@@ -21,7 +20,7 @@ public class RoundDecor extends AttrsDecor<ImageView> {
     @NotNull
     @Override
     protected int[] attrs() {
-        return new int[] {R.attr.round, R.attr.roundDrawable};
+        return new int[] {R.attr.round, R.attr.cornerRadius};
     }
 
     @NotNull
@@ -31,21 +30,13 @@ public class RoundDecor extends AttrsDecor<ImageView> {
     }
 
     @Override
-    protected void apply(ImageView view, int attr, TypedValue value) {
+    protected void apply(@NonNull ImageView view, int attr, TypedValue value) {
         Bitmap bitmap = BitmapFactory.decodeResource(view.getContext().getResources(), value.resourceId);
-        BitmapShader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setShader(shader);
-
-        RectF rect = new RectF(0.0f, 0.0f, view.getWidth(), view.getHeight());
-
-        // rect contains the bounds of the shape
-        // radius is the radius in pixels of the rounded corners
-        // paint contains the shader that will texture the shape
-
-        //canvas.drawRoundRect(rect, radius, radius, paint); //-> somehow we need access to canvas here ?
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(
+                view.getContext().getResources(), bitmap);
+        roundedBitmapDrawable.setCornerRadius(TypedValue.complexToDimension(value.data,
+                                view.getResources().getDisplayMetrics()));
+        view.setImageDrawable(roundedBitmapDrawable);
     }
 
 }

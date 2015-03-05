@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -32,7 +31,14 @@
         android:id="@+id/iv"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/photo1"
+        app:round="@drawable/photo1"
+        app:cornerRadius="30dp"
         app:onTouch="onIvTouch"/>
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/ic_launcher"
+        app:colorFilter="@android:color/holo_red_light"/>
 
 </LinearLayout>

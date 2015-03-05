@@ -14,8 +14,4 @@ public class SampleFragment extends Fragment {
         return inflater.inflate(R.layout.main_frag, container, false);
     }
 
-    public void onIvTouch() {
-        Log.i("TEST", " onIvTouch (from fragment) called on touch ");
-    }
-
 }

@@ -9,7 +9,8 @@ import com.madisp.pretty.Pretty;
 public class SampleActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Pretty pretty = Pretty.wrap(this).with(new FontDecor()).with(new ErrorDecor());
+        Pretty pretty = Pretty.wrap(this).with(new FontDecor()).with(new ErrorDecor())
+                                         .with(new RoundDecor());
         pretty.with(new onTouchDecor(this));
 
         super.onCreate(savedInstanceState);
