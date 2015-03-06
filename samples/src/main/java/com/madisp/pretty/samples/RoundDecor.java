@@ -33,9 +33,14 @@ public class RoundDecor extends AttrsDecor<ImageView> {
     protected void apply(@NonNull ImageView view, int attr, TypedValue value) {
         Bitmap bitmap = BitmapFactory.decodeResource(view.getContext().getResources(), value.resourceId);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(
-                view.getContext().getResources(), bitmap);
-        roundedBitmapDrawable.setCornerRadius(TypedValue.complexToDimension(value.data,
-                                view.getResources().getDisplayMetrics()));
+                                view.getContext().getResources(), bitmap);
+
+        float cornerRaduis = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value.data,
+                                                view.getResources().getDisplayMetrics());
+        /*roundedBitmapDrawable.setCornerRadius(TypedValue.applyDimension(value.density,
+                                view.getResources().getDisplayMetrics()));*/
+        //roundedBitmapDrawable.setCornerRadius(cornerRaduis);
+        roundedBitmapDrawable.setCornerRadius(Math.min(roundedBitmapDrawable.getMinimumWidth(), roundedBitmapDrawable.getMinimumHeight()) / 2.0F);
         view.setImageDrawable(roundedBitmapDrawable);
     }
 

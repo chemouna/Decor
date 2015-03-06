@@ -7,5 +7,6 @@
     <attr name="cornerRadius" format="dimension" />
     <attr name="onTouch" />
     <attr name="colorFilter" format="reference" />
+    <attr name="circular" format="boolean" />
 
 </resources>
