@@ -1,6 +1,5 @@
-package com.madisp.pretty;
+package mona.android.decor;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -11,12 +10,12 @@ import org.jetbrains.annotations.Nullable;
 /**
  * A class that operates on already constructed views, i.e., decorates them.
  */
-public interface Decor {
+public interface Decorator {
     /**
      * Decorates the given view.
      * This method will be called by Pretty for every {@link android.view.View} created in the layout
-     * if {@link com.madisp.pretty.Pretty#wrap(android.app.Activity)} was called and the decor added
-     * with {@link com.madisp.pretty.Pretty#with(Decor)}
+     * if {@link Decor#with(android.app.Activity)} was called and the decor added
+     * with {@link Decor#with(Decorator)}
      * @param view The view to decorate. Never null.
      * @param parent The parent view, if available. May be null.
      * @param name The name of the tag in the layout file, e.g. {@code TextView}.

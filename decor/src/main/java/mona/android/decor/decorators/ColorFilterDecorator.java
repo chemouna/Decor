@@ -1,16 +1,17 @@
-package com.madisp.pretty.samples;
+package mona.android.decor.decorators;
 
 import android.util.TypedValue;
 import android.widget.ImageView;
 
-import com.madisp.pretty.AttrsDecor;
-
 import org.jetbrains.annotations.NotNull;
+
+import mona.android.decor.AttrsDecorator;
+import mona.android.decor.R;
 
 /**
  * Created by cheikhna on 01/03/2015.
  */
-public class ColorFilterDecor extends AttrsDecor<ImageView> {
+public class ColorFilterDecorator extends AttrsDecorator<ImageView> {
 
     @NotNull
     @Override

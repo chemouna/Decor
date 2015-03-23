@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:name="com.madisp.pretty.samples.SampleFragment"
+        android:name="mona.android.decor.samples.SampleFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/main_frag"/>

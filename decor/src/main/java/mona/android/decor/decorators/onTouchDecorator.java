@@ -1,4 +1,4 @@
-package com.madisp.pretty.samples;
+package mona.android.decor.decorators;
 
 import android.app.Activity;
 import android.util.Log;
@@ -6,7 +6,8 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.madisp.pretty.AttrsDecor;
+import mona.android.decor.AttrsDecorator;
+import mona.android.decor.R;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,11 +17,11 @@ import java.lang.reflect.Method;
 /**
  * Created by cheikhna on 17/02/2015.
  */
-public class onTouchDecor extends AttrsDecor<View> {
+public class onTouchDecorator extends AttrsDecorator<View> {
 
     private Activity mContainerActivity;
 
-    public onTouchDecor(Activity activity) {
+    public onTouchDecorator(Activity activity) {
         mContainerActivity = activity;
     }
 

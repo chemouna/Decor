@@ -1,14 +1,16 @@
-package com.madisp.pretty.samples;
+package mona.android.decor.decorators;
 
 import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.widget.TextView;
 
-import com.madisp.pretty.AttrsDecor;
+import mona.android.decor.AttrsDecorator;
+
+import mona.android.decor.R;
 
 import org.jetbrains.annotations.NotNull;
 
-public class FontDecor extends AttrsDecor<TextView> {
+public class FontDecorator extends AttrsDecorator<TextView> {
     @NotNull
     @Override
     protected int[] attrs() {

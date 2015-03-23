@@ -1,4 +1,4 @@
-package com.madisp.pretty;
+package mona.android.decor;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,19 +14,19 @@ import java.util.Collection;
 /**
  * TODO: write a general overview of pretty.
  */
-public class Pretty {
-    private final Collection<Decor> decors = new ArrayList<Decor>();
+public class Decor {
+    private final Collection<Decorator> decorators = new ArrayList<Decorator>();
 
-    private Pretty(@NotNull final Activity activity) {
+    private Decor(@NotNull final Activity activity) {
         LayoutInflater inflater = activity.getLayoutInflater();
         if (inflater.getFactory2() != null || inflater.getFactory() != null) {
             throw new IllegalStateException(
-                    "Trying to Pretty.wrap an activity that already has a layoutinflater factory " +
-                    "set. Try calling Pretty.wrap before super.onCreate, especially if you're " +
+                    "Trying to Pretty.with an activity that already has a layoutinflater factory " +
+                    "set. Try calling Pretty.with before super.onCreate, especially if you're " +
                     "using SupportFragmentActivity/FragmentActivity.");
         }
         LayoutInflater.Factory2 wrappedFactory = null;
-        // if the activity is a FragmentActivity from the support lib then lets wrap it
+        // if the activity is a FragmentActivity from the support lib then lets with it
         // so the <fragment> tags still work
         try {
             Class<?> fragAct = Class.forName("android.support.v4.app.FragmentActivity");
@@ -44,29 +44,29 @@ public class Pretty {
                     }
                 };
             }
-        } catch (Exception _) { /* ignored */ }
-        inflater.setFactory2(new PrettyLayoutFactory(inflater, wrappedFactory, this));
+        } catch (Exception e) { /* ignored */ }
+        inflater.setFactory2(new DecoratorLayoutFactory(inflater, wrappedFactory, this));
     }
 
     /**
-     * "Infect" a LayoutInflater in an Activity with a new Pretty instance.
+     * "Infect" a LayoutInflater in an Activity with a new Decor instance.
      * @param activity activity whose LayoutInflater to mangle
-     * @return An instance of Pretty, see {@link com.madisp.pretty.Pretty#with(Decor)}
+     * @return An instance of Pretty, see {@link Decor#with(Decorator)}
      */
     @NotNull
-    public static Pretty wrap(@NotNull Activity activity) {
+    public static Decor with(@NotNull Activity activity) {
         // hide the constructor behind a more stable public "API"
-        return new Pretty(activity);
+        return new Decor(activity);
     }
 
     /**
      * Add a decorator to the filter chain.
-     * @param decor The decorator to add
+     * @param decorator The decorator to add
      * @return Pretty instance used, allows one to chain multiple with calls.
      */
     @NotNull
-    public Pretty with(@NotNull Decor decor) {
-        decors.add(decor);
+    public Decor with(@NotNull Decorator decorator) {
+        decorators.add(decorator);
         return this;
     }
 
@@ -74,7 +74,7 @@ public class Pretty {
      * @return The list of decorators registered so far.
      */
     @NotNull
-    public Collection<Decor> getDecors() {
-        return decors;
+    public Collection<Decorator> getDecorators() {
+        return decorators;
     }
 }

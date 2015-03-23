@@ -14,9 +14,7 @@ repositories {
 }
 
 dependencies {
-    compile(project(':pretty')) {
-        exclude module: 'android'
-    }
+    compile(project(':decor'))
 }
 
 android {

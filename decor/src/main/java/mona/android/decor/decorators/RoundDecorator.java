@@ -1,4 +1,4 @@
-package com.madisp.pretty.samples;
+package mona.android.decor.decorators;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,14 +8,16 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.TypedValue;
 import android.widget.ImageView;
 
-import com.madisp.pretty.AttrsDecor;
+import mona.android.decor.R;
+
+import mona.android.decor.AttrsDecorator;
 
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by cheikhna on 17/02/2015.
  */
-public class RoundDecor extends AttrsDecor<ImageView> {
+public class RoundDecorator extends AttrsDecorator<ImageView> {
 
     @NotNull
     @Override

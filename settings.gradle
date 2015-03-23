@@ -1,2 +1,1 @@
-rootProject.name = 'pretty'
-include ':pretty', ':samples', ':tests'
+include ':decor', ':samples', ':tests'

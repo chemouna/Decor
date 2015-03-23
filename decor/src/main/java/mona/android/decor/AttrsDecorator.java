@@ -1,6 +1,5 @@
-package com.madisp.pretty;
+package mona.android.decor;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -14,11 +13,11 @@ import org.jetbrains.annotations.Nullable;
  * A base class for a decorator that transform certain View subtypes with certain attributes. Useful
  * when you want to extend standard layout inflation to add your own attributes to system widgets.
  * If a view with type {@code View&lt;? extends T&gt;} is inflated and it has one of the attributes
- * returned by the {@link AttrsDecor#attrs()} method then {@link com.madisp.pretty.AttrsDecor#apply(android.view.View, int, android.util.TypedValue)}
+ * returned by the {@link AttrsDecorator#attrs()} method then {@link AttrsDecorator#apply(android.view.View, int, android.util.TypedValue)}
  * will be invoked for that view.
  * @param <T> The type or parent type of View that this decorator applies to.
  */
-public abstract class AttrsDecor<T extends View> implements Decor {
+public abstract class AttrsDecorator<T extends View> implements Decorator {
 
     /**
      * {@inheritDoc}
@@ -66,7 +65,7 @@ public abstract class AttrsDecor<T extends View> implements Decor {
 
     /**
      * This method will be called if a View of type T was inflated and it had one of the attributes
-     * specified by {@link AttrsDecor#attrs()} set.
+     * specified by {@link AttrsDecorator#attrs()} set.
      *
      * @param view  The view object that is being decorated.
      * @param attr  The attribute resource id (key).

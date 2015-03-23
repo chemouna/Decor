@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="typeface_asset" format="string" />
+    <attr name="error_text" format="string" />
+    <attr name="error_icon" format="reference" />
+    <attr name="round" format="reference" />
+    <attr name="cornerRadius" format="dimension" />
+    <attr name="onTouch" />
+    <attr name="colorFilter" format="reference" />
+    <attr name="circular" format="boolean" />
+
+</resources>

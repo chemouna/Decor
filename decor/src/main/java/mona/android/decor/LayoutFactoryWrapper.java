@@ -1,4 +1,4 @@
-package com.madisp.pretty;
+package mona.android.decor;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * A small helper class to wrap a LayoutInflater's factory.
+ * A small helper class to with a LayoutInflater's factory.
  */
 public abstract class LayoutFactoryWrapper implements LayoutInflater.Factory2 {
     @NotNull

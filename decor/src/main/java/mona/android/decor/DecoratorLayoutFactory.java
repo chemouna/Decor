@@ -1,4 +1,4 @@
-package com.madisp.pretty;
+package mona.android.decor;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,12 +11,12 @@ import org.jetbrains.annotations.Nullable;
 /**
  * A small util class that wraps a layoutinflater and its factory to apply a bunch of decorators.
  */
-public class PrettyLayoutFactory extends LayoutFactoryWrapper {
-    Pretty pretty;
+public class DecoratorLayoutFactory extends LayoutFactoryWrapper {
+    Decor decor;
 
-    public PrettyLayoutFactory(@NotNull LayoutInflater inflater, @Nullable LayoutInflater.Factory2 base, @NotNull Pretty pretty) {
+    public DecoratorLayoutFactory(@NotNull LayoutInflater inflater, @Nullable LayoutInflater.Factory2 base, @NotNull Decor decor) {
         super(inflater, base);
-        this.pretty = pretty;
+        this.decor = decor;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class PrettyLayoutFactory extends LayoutFactoryWrapper {
         if (view == null) {
             return null;
         }
-        for (Decor d : pretty.getDecors()) {
+        for (Decorator d : decor.getDecorators()) {
             d.apply(view, parent, name, context, attrs);
         }
         return view;

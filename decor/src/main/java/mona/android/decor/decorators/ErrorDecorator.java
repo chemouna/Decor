@@ -1,22 +1,20 @@
-package com.madisp.pretty.samples;
+package mona.android.decor.decorators;
 
-import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.madisp.pretty.AttrsDecor;
+import mona.android.decor.AttrsDecorator;
+import mona.android.decor.R;
 
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by cheikhna on 09/02/2015.
  */
-public class ErrorDecor extends AttrsDecor<EditText> {
+public class ErrorDecorator extends AttrsDecorator<EditText> {
     @NotNull
     @Override
     protected int[] attrs() {
