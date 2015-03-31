@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.1'
+        classpath 'com.android.tools.build:gradle:1.1.+'
     }
 }
 
@@ -15,12 +15,12 @@ repositories {
 
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion '21.1.2'
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 21
+        targetSdkVersion 22
     }
 
     lintOptions {
@@ -30,5 +30,5 @@ android {
 
 dependencies {
     compile(project(':decor'))
-    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:support-v4:22.+'
 }

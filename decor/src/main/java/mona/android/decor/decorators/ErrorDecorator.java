@@ -18,8 +18,8 @@ public class ErrorDecorator extends AttrsDecorator<EditText> {
     @NotNull
     @Override
     protected int[] attrs() {
-        return new int[] { R.attr.error_text, R.attr.error_icon };
-    }
+        return new int[] { R.attr.error_icon };
+    } //R.attr.error_text,
 
     @NotNull
     @Override
@@ -28,19 +28,26 @@ public class ErrorDecorator extends AttrsDecorator<EditText> {
     }
 
     @Override
-    protected void apply(EditText view, int attr, TypedValue value) {
+    protected void apply(EditText view, int attr, TypedValue value) { //or maybe apply shouldn't have
+                // in its signature here TypedValue but TypedArray since it may have more than one element
+                //or have only a single attr
         //TODO: but define in what condition to decorate with an error
         ///if(! view.getText().equals("AB")) {
 
-        int[] errorIconAttr = new int[] { R.attr.error_icon };
-        int indexOfAttrErrorIcon = 0;
-        TypedArray a = view.getContext().obtainStyledAttributes(value.data, errorIconAttr);
-        Drawable icon = a.getDrawable(indexOfAttrErrorIcon);
-        a.recycle();
+        //int[] errorIconAttr = new int[] { R.attr.error_icon };
+        //int indexOfAttrErrorIcon = 0;
 
-        view.setError(value.string.toString(), icon);
+        //TypedArray a = view.getContext().obtainStyledAttributes(value.data, errorIconAttr);
+        //Drawable icon = a.getDrawable(indexOfAttrErrorIcon); //the way we are getting the icon here isn't working at all
+
+        if(value.resourceId > 0) {
+            Drawable icon = view.getContext().getResources()
+                                    .getDrawable(value.resourceId);
+            //view.setError(value.string.toString(), icon);
+            view.setError(null, icon);
+        }
+
         view.setBackgroundColor(Color.RED);
-        //}
     }
 
 }

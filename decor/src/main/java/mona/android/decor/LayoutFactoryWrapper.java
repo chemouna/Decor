@@ -8,6 +8,8 @@ import android.view.View;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import hugo.weaving.DebugLog;
+
 /**
  * A small helper class to with a LayoutInflater's factory.
  */
@@ -23,11 +25,14 @@ public abstract class LayoutFactoryWrapper implements LayoutInflater.Factory2 {
             "android.webkit."
     };
 
+    @DebugLog
     public LayoutFactoryWrapper(@NotNull LayoutInflater inflater, @Nullable LayoutInflater.Factory2 baseFactory) {
         this.inflater = inflater;
         this.base = baseFactory;
     }
 
+
+    @DebugLog
     @Override
     @Nullable
     public View onCreateView(@Nullable View parent, @NotNull String name, @NotNull Context context, @NotNull AttributeSet attrs) {
@@ -52,12 +57,14 @@ public abstract class LayoutFactoryWrapper implements LayoutInflater.Factory2 {
         return v;
     }
 
+    @DebugLog
     @Override
     @Nullable
     public View onCreateView(@NotNull String name, @NotNull Context context, @NotNull AttributeSet attrs) {
         return onCreateView(null, name, context, attrs);
     }
 
+    @DebugLog
     @Nullable
     protected abstract View onViewCreated(@Nullable View view, @Nullable View parent, @NotNull String name, @NotNull Context context, @NotNull AttributeSet attrs);
 }

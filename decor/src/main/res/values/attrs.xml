@@ -6,7 +6,8 @@
     <attr name="round" format="reference" />
     <attr name="cornerRadius" format="dimension" />
     <attr name="onTouch" />
-    <attr name="colorFilter" format="reference" />
+    <attr name="colorFilter" format="color" />
     <attr name="circular" format="boolean" />
+    <attr name="animateSearch" format="boolean"/>
 
 </resources>

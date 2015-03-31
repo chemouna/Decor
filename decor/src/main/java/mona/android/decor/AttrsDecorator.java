@@ -9,6 +9,8 @@ import android.view.View;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import hugo.weaving.DebugLog;
+
 /**
  * A base class for a decorator that transform certain View subtypes with certain attributes. Useful
  * when you want to extend standard layout inflation to add your own attributes to system widgets.
@@ -22,6 +24,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
     /**
      * {@inheritDoc}
      */
+    @DebugLog
     @Override
     public final void apply(@NotNull View view, @Nullable View parent, @NotNull String name, @NotNull Context context, @NotNull AttributeSet attrs) {
         if (!clazz().isAssignableFrom(view.getClass())) {
@@ -52,6 +55,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      *
      * @return a non-null array of android attr resource ids.
      */
+    @DebugLog
     @NotNull
     protected abstract int[] attrs();
 
@@ -60,6 +64,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      *
      * @return The class/typetoken for T
      */
+    @DebugLog
     @NotNull
     protected abstract Class<T> clazz();
 
@@ -71,6 +76,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      * @param attr  The attribute resource id (key).
      * @param value The attribute value.
      */
+    @DebugLog
     protected abstract void apply(T view, int attr, TypedValue value);
 
 }

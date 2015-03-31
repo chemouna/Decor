@@ -19,9 +19,9 @@
         android:text="Hi, I'm a TextView with a different font"
         android:layout_marginBottom="8dp"
         app:typeface_asset="Ubuntu-M.ttf"
-        app:error_text="Error inside a textview"
         app:error_icon="@drawable/ic_error_et" />
-e
+    <!--   app:error_text="Error inside a textview" -->
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,6 +41,15 @@ e
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:src="@drawable/ic_launcher"
-        app:colorFilter="@android:color/holo_red_light"/>
+        app:colorFilter="#00ffff"/>
+
+
+    <ImageView
+        android:id="@+id/search"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="24dp"
+        android:src="@drawable/search_vector_drawable"
+        app:animateSearch="true" />
 
 </LinearLayout>

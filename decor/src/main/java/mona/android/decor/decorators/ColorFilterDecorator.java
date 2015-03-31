@@ -27,7 +27,7 @@ public class ColorFilterDecorator extends AttrsDecorator<ImageView> {
 
     @Override
     protected void apply(ImageView view, int attr, TypedValue value) {
-        view.setColorFilter(value.resourceId);
+        view.setColorFilter(value.data);
     }
 
 }

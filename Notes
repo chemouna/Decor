@@ -2,7 +2,7 @@
 
 - Anther exple of using this :
 https://chris.banes.me/2014/10/17/appcompat-v21/
-The widget tinting in appcompat works by intercepting any layout inflation and inserting a special tint-aware version
+The widget tinting in appcompat wlsorks by intercepting any layout inflation and inserting a special tint-aware version
 of the widget in its place
 https://android.googlesource.com/platform/frameworks/support/+/master/v7/appcompat/src/android/support/v7/internal/app/TintViewInflater.java
 
@@ -24,3 +24,13 @@ https://android.googlesource.com/platform/frameworks/support/+/master/v7/appcomp
      //and it even does customised theming
 
  - get inspiration for api & names from Picasso and how its implemented
+
+- interesting .. the difference between decor & probe plugging in before onCreate but
+  calligraphy in AttachBaseContext
+   (using ContextThemeWrapper)
+
+ - what i dont understand is where each part decor plugs on android part ?
+ --> maybe there are some useful infos in probe or google's DexMaker
+
+
+ --> the way i get typed attribute doesnt seem correct

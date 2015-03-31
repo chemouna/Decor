@@ -4,11 +4,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.+'
+        classpath 'com.android.tools.build:gradle:1.1.+'
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
     }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.hugo'
 
 repositories {
     mavenCentral()
@@ -16,6 +18,7 @@ repositories {
         url 'https://oss.sonatype.org/content/repositories/snapshots'
     }
 }
+
 
 android {
     compileSdkVersion 22
@@ -39,7 +42,11 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
 
-    compile 'com.android.support:support-annotations:21.+'
+    compile 'com.android.support:support-annotations:22.+'
     compile 'org.jetbrains:annotations:13.0'
+    compile 'com.jakewharton.timber:timber:2.7.1'
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.9.5"
 
 }

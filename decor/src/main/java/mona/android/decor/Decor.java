@@ -11,18 +11,28 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import hugo.weaving.DebugLog;
+import mona.android.decor.decorators.CircularImageDecorator;
+import mona.android.decor.decorators.ColorFilterDecorator;
+import mona.android.decor.decorators.ErrorDecorator;
+import mona.android.decor.decorators.FontDecorator;
+import mona.android.decor.decorators.OnTouchDecorator;
+import mona.android.decor.decorators.RoundDecorator;
+import mona.android.decor.decorators.SearchAnimationDecorator;
+
 /**
  * TODO: write a general overview of pretty.
  */
 public class Decor {
     private final Collection<Decorator> decorators = new ArrayList<Decorator>();
 
+    @DebugLog
     private Decor(@NotNull final Activity activity) {
         LayoutInflater inflater = activity.getLayoutInflater();
         if (inflater.getFactory2() != null || inflater.getFactory() != null) {
             throw new IllegalStateException(
-                    "Trying to Pretty.with an activity that already has a layoutinflater factory " +
-                    "set. Try calling Pretty.with before super.onCreate, especially if you're " +
+                    "Trying to Decor.with an activity that already has a layoutinflater factory " +
+                    "set. Try calling Decor.with before super.onCreate, especially if you're " +
                     "using SupportFragmentActivity/FragmentActivity.");
         }
         LayoutInflater.Factory2 wrappedFactory = null;
@@ -53,6 +63,7 @@ public class Decor {
      * @param activity activity whose LayoutInflater to mangle
      * @return An instance of Pretty, see {@link Decor#with(Decorator)}
      */
+    @DebugLog
     @NotNull
     public static Decor with(@NotNull Activity activity) {
         // hide the constructor behind a more stable public "API"
@@ -60,10 +71,25 @@ public class Decor {
     }
 
     /**
+     * Add all decorators
+     */
+    @DebugLog
+    @NotNull
+    public Decor withAll(Activity activity) {
+        with(new CircularImageDecorator()).with(new ColorFilterDecorator())
+                .with(new ErrorDecorator()).with(new FontDecorator())
+                .with(new OnTouchDecorator(activity)).with(new RoundDecorator())
+                .with(new SearchAnimationDecorator());
+
+        return this;
+    }
+
+    /**
      * Add a decorator to the filter chain.
      * @param decorator The decorator to add
      * @return Pretty instance used, allows one to chain multiple with calls.
      */
+    @DebugLog
     @NotNull
     public Decor with(@NotNull Decorator decorator) {
         decorators.add(decorator);
@@ -73,6 +99,7 @@ public class Decor {
     /**
      * @return The list of decorators registered so far.
      */
+    @DebugLog
     @NotNull
     public Collection<Decorator> getDecorators() {
         return decorators;
