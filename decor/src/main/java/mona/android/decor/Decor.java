@@ -16,9 +16,9 @@ import mona.android.decor.decorators.CircularImageDecorator;
 import mona.android.decor.decorators.ColorFilterDecorator;
 import mona.android.decor.decorators.ErrorDecorator;
 import mona.android.decor.decorators.FontDecorator;
-import mona.android.decor.decorators.OnTouchDecorator;
 import mona.android.decor.decorators.RoundDecorator;
 import mona.android.decor.decorators.SearchAnimationDecorator;
+import mona.android.decor.decorators.OnTouchDecorator;
 
 /**
  * TODO: write a general overview of pretty.
@@ -78,7 +78,8 @@ public class Decor {
     public Decor withAll(Activity activity) {
         with(new CircularImageDecorator()).with(new ColorFilterDecorator())
                 .with(new ErrorDecorator()).with(new FontDecorator())
-                .with(new OnTouchDecorator(activity)).with(new RoundDecorator())
+                .with(new OnTouchDecorator(activity))
+                .with(new RoundDecorator())
                 .with(new SearchAnimationDecorator());
 
         return this;

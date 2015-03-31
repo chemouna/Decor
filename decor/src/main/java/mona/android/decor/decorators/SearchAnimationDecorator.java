@@ -25,6 +25,10 @@ public class SearchAnimationDecorator extends AttrsDecorator<ImageView> {
     private int mDuration;
     private float mOffset;
 
+
+    public SearchAnimationDecorator() {
+    }
+
     @NotNull
     @Override
     protected int[] attrs() {
