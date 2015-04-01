@@ -1,6 +1,8 @@
 package mona.android.decor.decorators;
 
+import android.annotation.TargetApi;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.os.Build;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -13,9 +15,9 @@ import mona.android.decor.AttrsDecorator;
 import mona.android.decor.R;
 
 /**
- * Created by cheikhna on 31/03/2015.
+ * Created by mounacheikhna on 01/04/2015.
  */
-public class SearchAnimationDecorator extends AttrsDecorator<ImageView> {
+public class SearchAnimateDecorator extends AttrsDecorator<ImageView> {
 
     private boolean expanded = false;
     private ImageView mIv;
@@ -24,10 +26,6 @@ public class SearchAnimationDecorator extends AttrsDecorator<ImageView> {
     private Interpolator mInterp;
     private int mDuration;
     private float mOffset;
-
-
-    public SearchAnimationDecorator() {
-    }
 
     @NotNull
     @Override
@@ -60,6 +58,8 @@ public class SearchAnimationDecorator extends AttrsDecorator<ImageView> {
         });
     }
 
+    //TODO: do a version of this for pre-lollipop or dont allow the use of it
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void animate(View view) {
         if (!expanded) {
             mIv.setImageDrawable(mSearchToBar);

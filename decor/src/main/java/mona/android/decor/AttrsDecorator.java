@@ -12,9 +12,9 @@ import org.jetbrains.annotations.Nullable;
 import hugo.weaving.DebugLog;
 
 /**
- * A base class for a decorator that transform certain View subtypes get certain attributes. Useful
+ * A base class for a decorator that transform certain View subtypes with certain attributes. Useful
  * when you want to extend standard layout inflation to add your own attributes to system widgets.
- * If a view get type {@code View&lt;? extends T&gt;} is inflated and it has one of the attributes
+ * If a view with type {@code View&lt;? extends T&gt;} is inflated and it has one of the attributes
  * returned by the {@link AttrsDecorator#attrs()} method then {@link AttrsDecorator#apply(android.view.View, int, android.util.TypedValue)}
  * will be invoked for that view.
  * @param <T> The type or parent type of View that this decorator applies to.

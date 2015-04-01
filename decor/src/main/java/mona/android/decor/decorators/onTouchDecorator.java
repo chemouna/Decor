@@ -48,13 +48,13 @@ public class OnTouchDecorator extends AttrsDecorator<View> {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.i("TEST", " onTouch called get event "+ event);
+                Log.i("TEST", " onTouch called with event "+ event);
 
-                Log.i("TEST", " onTouch called get value.string =" + value.string);
+                Log.i("TEST", " onTouch called with value.string =" + value.string);
                 Method mHandler = null;
                 try {
                     if(mContainerActivity != null) {
-                        Log.i("TEST", " -> trying to get handler for "+ value.string);
+                        Log.i("TEST", " -> trying to with handler for "+ value.string);
                         mHandler = mContainerActivity.getClass().getMethod(value.string.toString());
                     }
                 } catch (NoSuchMethodException e) {

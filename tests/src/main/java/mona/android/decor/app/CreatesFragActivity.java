@@ -13,7 +13,7 @@ public class CreatesFragActivity extends FragmentActivity {
 		setContentView(R.layout.emty_main);
 
 		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction().add(mona.android.decor.R.id.main, new TestFragment()).commit();
+			getSupportFragmentManager().beginTransaction().add(R.id.main, new TestFragment()).commit();
 		}
 	}
 }

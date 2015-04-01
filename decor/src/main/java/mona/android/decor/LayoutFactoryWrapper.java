@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import hugo.weaving.DebugLog;
 
 /**
- * A small helper class to get a LayoutInflater's factory.
+ * A small helper class to with a LayoutInflater's factory.
  */
 public abstract class LayoutFactoryWrapper implements LayoutInflater.Factory2 {
     @NotNull

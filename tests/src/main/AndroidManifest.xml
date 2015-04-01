@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="mona.android.decor.tests" >
+          package="mona.android.decor.app" >
     <application android:allowBackup="false">
-        <activity android:name="mona.android.decor.app.CreatesFragActivity" />
+        <activity android:name=".CreatesFragActivity" />
     </application>
 </manifest>

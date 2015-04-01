@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <attr name="typeface_asset" format="string" />
     <attr name="error_text" format="string" />
     <attr name="error_icon" format="reference" />
@@ -8,6 +9,5 @@
     <attr name="onTouch" />
     <attr name="colorFilter" format="color" />
     <attr name="circular" format="boolean" />
-    <attr name="animateSearch" format="boolean"/>
 
 </resources>
