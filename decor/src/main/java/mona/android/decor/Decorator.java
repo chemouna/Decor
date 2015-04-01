@@ -14,8 +14,8 @@ public interface Decorator {
     /**
      * Decorates the given view.
      * This method will be called by Pretty for every {@link android.view.View} created in the layout
-     * if {@link Decor#with(android.app.Activity)} was called and the decor added
-     * with {@link Decor#with(Decorator)}
+     * if {@link Decor#get(android.app.Activity)} was called and the decor added
+     * get {@link Decor#get(Decorator)}
      * @param view The view to decorate. Never null.
      * @param parent The parent view, if available. May be null.
      * @param name The name of the tag in the layout file, e.g. {@code TextView}.

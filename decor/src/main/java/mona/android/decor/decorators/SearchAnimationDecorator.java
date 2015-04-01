@@ -32,7 +32,7 @@ public class SearchAnimationDecorator extends AttrsDecorator<ImageView> {
     @NotNull
     @Override
     protected int[] attrs() {
-        return new int[R.attr.animateSearch];
+        return new int[]{R.attr.animateSearch};
     }
 
     @NotNull

@@ -1,20 +1,24 @@
-    buildscript {
-        repositories {
-            mavenCentral()
-        }
-        dependencies {
-            classpath 'com.android.tools.build:gradle:1.1.+'
-        }
+buildscript {
+    repositories {
+        mavenCentral()
     }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.0-beta1'
+    }
+}
 
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile(project(':decor'))
+    compile project(':decor')
+    compile 'com.android.support:support-v4:22.0.0'
+    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+    androidTestCompile 'org.assertj:assertj-core:1.7.1'
 }
 
 android {
@@ -24,9 +28,15 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 22
+
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
     lintOptions {
         disable 'MissingPrefix'
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
     }
 }

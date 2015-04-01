@@ -5,7 +5,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/material_blue_grey_800">
+
+    <ImageView
+        android:id="@+id/search"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="24dp"
+        android:src="@drawable/search_vector_drawable"
+        app:animateSearch="true" />
 
     <TextView
         android:layout_width="match_parent"
@@ -42,14 +51,5 @@
         android:layout_height="90dp"
         android:src="@drawable/ic_launcher"
         app:colorFilter="#00ffff"/>
-
-
-    <ImageView
-        android:id="@+id/search"
-        android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="24dp"
-        android:src="@drawable/search_vector_drawable"
-        app:animateSearch="true" />
 
 </LinearLayout>

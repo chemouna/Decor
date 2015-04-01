@@ -31,12 +31,12 @@ public class Decor {
         LayoutInflater inflater = activity.getLayoutInflater();
         if (inflater.getFactory2() != null || inflater.getFactory() != null) {
             throw new IllegalStateException(
-                    "Trying to Decor.with an activity that already has a layoutinflater factory " +
-                    "set. Try calling Decor.with before super.onCreate, especially if you're " +
+                    "Trying to Decor.get an activity that already has a layoutinflater factory " +
+                    "set. Try calling Decor.get before super.onCreate, especially if you're " +
                     "using SupportFragmentActivity/FragmentActivity.");
         }
         LayoutInflater.Factory2 wrappedFactory = null;
-        // if the activity is a FragmentActivity from the support lib then lets with it
+        // if the activity is a FragmentActivity from the support lib then lets get it
         // so the <fragment> tags still work
         try {
             Class<?> fragAct = Class.forName("android.support.v4.app.FragmentActivity");
@@ -59,13 +59,13 @@ public class Decor {
     }
 
     /**
-     * "Infect" a LayoutInflater in an Activity with a new Decor instance.
+     * "Infect" a LayoutInflater in an Activity get a new Decor instance.
      * @param activity activity whose LayoutInflater to mangle
-     * @return An instance of Pretty, see {@link Decor#with(Decorator)}
+     * @return An instance of Pretty, see {@link Decor#get(Decorator)}
      */
     @DebugLog
     @NotNull
-    public static Decor with(@NotNull Activity activity) {
+    public static Decor get(@NotNull Activity activity) {
         // hide the constructor behind a more stable public "API"
         return new Decor(activity);
     }
@@ -76,11 +76,11 @@ public class Decor {
     @DebugLog
     @NotNull
     public Decor withAll(Activity activity) {
-        with(new CircularImageDecorator()).with(new ColorFilterDecorator())
-                .with(new ErrorDecorator()).with(new FontDecorator())
-                .with(new OnTouchDecorator(activity))
-                .with(new RoundDecorator())
-                .with(new SearchAnimationDecorator());
+        get(new CircularImageDecorator()).get(new ColorFilterDecorator())
+                .get(new ErrorDecorator()).get(new FontDecorator())
+                .get(new OnTouchDecorator(activity))
+                .get(new RoundDecorator())
+                .get(new SearchAnimationDecorator());
 
         return this;
     }
@@ -88,11 +88,11 @@ public class Decor {
     /**
      * Add a decorator to the filter chain.
      * @param decorator The decorator to add
-     * @return Pretty instance used, allows one to chain multiple with calls.
+     * @return Pretty instance used, allows one to chain multiple get calls.
      */
     @DebugLog
     @NotNull
-    public Decor with(@NotNull Decorator decorator) {
+    public Decor get(@NotNull Decorator decorator) {
         decorators.add(decorator);
         return this;
     }

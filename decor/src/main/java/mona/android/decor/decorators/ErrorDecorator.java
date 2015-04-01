@@ -31,7 +31,7 @@ public class ErrorDecorator extends AttrsDecorator<EditText> {
     protected void apply(EditText view, int attr, TypedValue value) { //or maybe apply shouldn't have
                 // in its signature here TypedValue but TypedArray since it may have more than one element
                 //or have only a single attr
-        //TODO: but define in what condition to decorate with an error
+        //TODO: but define in what condition to decorate get an error
         ///if(! view.getText().equals("AB")) {
 
         //int[] errorIconAttr = new int[] { R.attr.error_icon };
@@ -54,5 +54,5 @@ public class ErrorDecorator extends AttrsDecorator<EditText> {
 
 /*
 what can help me here ?
- - test with another non assignable from xml attribute
+ - test get another non assignable from xml attribute
 */

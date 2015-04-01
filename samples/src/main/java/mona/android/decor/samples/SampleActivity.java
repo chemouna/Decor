@@ -11,11 +11,11 @@ public class SampleActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Maybe have in the lib something that by default adds all of those base decors
         //to not require a user of this to have to all of this !!
-       /* Decor decor = Decor.with(this).with(new FontDecorator()).with(new ErrorDecorator())
-                                         .with(new RoundDecorator()).with(new CircularImageDecorator());
-        decor.with(new onTouchDecorator(this));*/
+       /* Decor decor = Decor.get(this).get(new FontDecorator()).get(new ErrorDecorator())
+                                         .get(new RoundDecorator()).get(new CircularImageDecorator());
+        decor.get(new onTouchDecorator(this));*/
 
-        Decor decor = Decor.with(this).withAll(this);
+        Decor decor = Decor.get(this).withAll(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
