@@ -9,5 +9,8 @@
     <attr name="onTouch" />
     <attr name="colorFilter" format="color" />
     <attr name="circular" format="boolean" />
+    <attr name="onLongClick" />
+    <attr name="layoutManager" />
+    <attr name="layoutManagerOrientation" />
 
 </resources>

@@ -3,6 +3,7 @@ package mona.android.decor.samples;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import mona.android.decor.Decor;
 
@@ -22,7 +23,10 @@ public class SampleActivity extends FragmentActivity {
     }
 
     public void onIvTouch() {
-       Log.i("TEST", " onIvTouch (from activity) called on touch ");
+        Toast.makeText(this, " Touch detected ", Toast.LENGTH_SHORT).show();
     }
 
+    public void onRobotLongClick() {
+        Toast.makeText(this, " Long click detected ", Toast.LENGTH_SHORT).show();
+    }
 }

@@ -17,8 +17,9 @@ import mona.android.decor.decorators.CircularImageDecorator;
 import mona.android.decor.decorators.ColorFilterDecorator;
 import mona.android.decor.decorators.ErrorDecorator;
 import mona.android.decor.decorators.FontDecorator;
-import mona.android.decor.decorators.RoundDecorator;
+import mona.android.decor.decorators.OnLongClickDecorator;
 import mona.android.decor.decorators.OnTouchDecorator;
+import mona.android.decor.decorators.RoundDecorator;
 import mona.android.decor.decorators.SearchAnimateDecorator;
 
 /**
@@ -82,7 +83,8 @@ public class Decor {
         .with(new ErrorDecorator())
         .with(new FontDecorator())
         .with(new RoundDecorator())
-        .with(new OnTouchDecorator(activity));
+        .with(new OnTouchDecorator(activity))
+        .with(new OnLongClickDecorator(activity));
         if(VersionUtils.isAtLeastL()) {
             with(new SearchAnimateDecorator());
         }

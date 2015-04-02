@@ -41,9 +41,21 @@
         app:onTouch="onIvTouch"/>
 
     <ImageView
+        android:id="@+id/colorRobot"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:src="@drawable/ic_launcher"
-        app:colorFilter="#00ffff"/>
+        app:colorFilter="#00ffff"
+        app:onLongClick="onRobotLongClick"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:Text="Recycler view decorator example"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
