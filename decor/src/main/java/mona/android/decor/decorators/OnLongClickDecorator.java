@@ -12,7 +12,7 @@ import mona.android.decor.R;
 /**
  * Created by cheikhna on 02/04/2015.
  */
-public class OnLongClickDecorator extends OnActionBaseDecorator {
+public class OnLongClickDecorator { /*extends OnActionBaseDecorator {
 
     public OnLongClickDecorator(Activity activity) {
         super(activity);
@@ -33,6 +33,6 @@ public class OnLongClickDecorator extends OnActionBaseDecorator {
                 return true;
             }
         });
-    }
+    }*/
 
 }

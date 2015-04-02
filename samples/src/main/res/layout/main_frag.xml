@@ -5,27 +5,26 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/material_blue_grey_800">
+    android:padding="12dp">
 
-    <include layout="@layout/api_dependent_layout" />
+  <!--  <include layout="@layout/api_dependent_layout" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hi, I'm a TextView"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp" />-->
 
     <EditText
+        android:id="@+id/edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hi, I'm a TextView with a different font"
-        android:layout_marginBottom="8dp"
-        app:typeface_asset="Ubuntu-M.ttf"
-        app:error_icon="@drawable/ic_error_et" />
-    <!--   app:error_text="Error inside a textview" -->
+        android:text="@string/textview_example"
+        app:error_icon="@drawable/ic_error_et"
+        app:error_text="Error inside a textview" />
+    <!-- app:typeface_asset="Ubuntu-M.ttf" -->
 
-    <Button
+  <!--  <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="And I'm a Button"
@@ -57,5 +56,5 @@
         android:id="@+id/recyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
+-->
 </LinearLayout>

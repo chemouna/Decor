@@ -19,7 +19,7 @@ import mona.android.decor.R;
 /**
  * Created by cheikhna on 17/02/2015.
  */
-public class OnTouchDecorator extends OnActionBaseDecorator {
+public class OnTouchDecorator { /*extends OnActionBaseDecorator {
 
     public OnTouchDecorator(Activity activity) {
         super(activity);
@@ -40,6 +40,6 @@ public class OnTouchDecorator extends OnActionBaseDecorator {
                 return OnTouchDecorator.this.onAction(value);
             }
         });
-    }
+    }*/
 
 }

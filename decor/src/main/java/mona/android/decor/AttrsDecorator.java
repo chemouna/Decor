@@ -9,6 +9,9 @@ import android.view.View;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import hugo.weaving.DebugLog;
 
 /**
@@ -36,17 +39,43 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
             return;
         }
 
-        TypedValue buf = new TypedValue();
+        List<DecorParam> decorParamList = new ArrayList<>(); //maybe a sparseArray ?
         try {
             for (int i = 0; i < values.length(); i++) {
+                TypedValue buf = new TypedValue();
                 if (values.hasValue(i) && values.getValue(i, buf)) {
+                    decorParamList.add(new DecorParam(buf, attrs()[i]));
                     // inspection disabled as we do know at this point that view can be cast to T
                     //noinspection unchecked
-                    apply((T) view, attrs()[i], buf);
+                    //apply((T) view, attrs()[i], buf);
                 }
+            }
+            if(! decorParamList.isEmpty()) {
+                // inspection disabled as we do know at this point that view can be cast to T
+                //noinspection unchecked
+                apply((T) view, decorParamList);
             }
         } finally {
             values.recycle();
+        }
+    }
+
+    //TODO: find a better name
+    public class DecorParam {
+        private TypedValue value;
+        private int attr;
+
+        public DecorParam(TypedValue value, int attr) {
+            this.value = value;
+            this.attr = attr;
+        }
+
+        public TypedValue getValue() {
+            return value;
+        }
+
+        public int getAttr() {
+            return attr;
         }
     }
 
@@ -76,7 +105,10 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      * @param attr  The attribute resource id (key).
      * @param value The attribute value.
      */
-    @DebugLog
-    protected abstract void apply(T view, int attr, TypedValue value);
+    //@DebugLog
+    //protected abstract void apply(T view, int attr, TypedValue value);
+
+    //TODO: documentation
+    protected abstract void apply(T view, List<DecorParam> decorParamList);
 
 }

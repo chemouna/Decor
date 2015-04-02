@@ -33,9 +33,6 @@ public abstract class OnActionBaseDecorator extends AttrsDecorator<View> {
         return View.class;
     }
 
-    @Override
-    protected abstract void apply(View view, int attr, TypedValue value);
-
     protected boolean onAction(TypedValue value) {
         Method mHandler = null;
         try {

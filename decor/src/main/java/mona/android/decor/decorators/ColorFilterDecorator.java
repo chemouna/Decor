@@ -11,7 +11,7 @@ import mona.android.decor.R;
 /**
  * Created by cheikhna on 01/03/2015.
  */
-public class ColorFilterDecorator extends AttrsDecorator<ImageView> {
+public class ColorFilterDecorator { /*extends AttrsDecorator<ImageView> {
 
     @NotNull
     @Override
@@ -28,6 +28,6 @@ public class ColorFilterDecorator extends AttrsDecorator<ImageView> {
     @Override
     protected void apply(ImageView view, int attr, TypedValue value) {
         view.setColorFilter(value.data);
-    }
+    }*/
 
 }

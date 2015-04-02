@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_label">Pretty samples</string>
+    <string name="textview_example">Hi, I\'m a TextView with a different font</string>
 </resources>

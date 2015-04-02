@@ -78,16 +78,16 @@ public class Decor {
     @DebugLog
     @NotNull
     public Decor withAll(Activity activity) {
-         with(new CircularImageDecorator())
-        .with(new ColorFilterDecorator())
-        .with(new ErrorDecorator())
-        .with(new FontDecorator())
+       /*  with(new CircularImageDecorator())
+        .with(new ColorFilterDecorator())*/
+        with(new ErrorDecorator());
+        /*.with(new FontDecorator())
         .with(new RoundDecorator())
         .with(new OnTouchDecorator(activity))
         .with(new OnLongClickDecorator(activity));
         if(VersionUtils.isAtLeastL()) {
             with(new SearchAnimateDecorator());
-        }
+        }*/
         return this;
     }
 

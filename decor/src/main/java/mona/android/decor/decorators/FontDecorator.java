@@ -10,7 +10,7 @@ import mona.android.decor.R;
 
 import org.jetbrains.annotations.NotNull;
 
-public class FontDecorator extends AttrsDecorator<TextView> {
+public class FontDecorator { /* extends AttrsDecorator<TextView> {
     @NotNull
     @Override
     protected int[] attrs() {
@@ -27,4 +27,5 @@ public class FontDecorator extends AttrsDecorator<TextView> {
     protected void apply(TextView view, int attr, TypedValue value) {
         view.setTypeface(Typeface.createFromAsset(view.getResources().getAssets(), value.string.toString()));
     }
+  */
 }

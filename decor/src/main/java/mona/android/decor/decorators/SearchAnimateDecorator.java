@@ -17,7 +17,7 @@ import mona.android.decor.R;
 /**
  * Created by mounacheikhna on 01/04/2015.
  */
-public class SearchAnimateDecorator extends AttrsDecorator<ImageView> {
+public class SearchAnimateDecorator { /*extends AttrsDecorator<ImageView> {
 
     private boolean expanded = false;
     private ImageView mIv;
@@ -73,6 +73,6 @@ public class SearchAnimateDecorator extends AttrsDecorator<ImageView> {
             //text.setAlpha(0f);
         }
         expanded = !expanded;
-    }
+    }*/
 
 }

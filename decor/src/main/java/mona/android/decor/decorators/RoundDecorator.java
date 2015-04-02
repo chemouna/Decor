@@ -17,7 +17,7 @@ import mona.android.decor.R;
 /**
  * Created by cheikhna on 17/02/2015.
  */
-public class RoundDecorator extends AttrsDecorator<ImageView> {
+public class RoundDecorator { /*extends AttrsDecorator<ImageView> {
 
     @DebugLog
     @NotNull
@@ -45,6 +45,6 @@ public class RoundDecorator extends AttrsDecorator<ImageView> {
         roundedBitmapDrawable.setCornerRadius(Math.min(roundedBitmapDrawable.getMinimumWidth(),
                                                 roundedBitmapDrawable.getMinimumHeight()) / 2.0F);
         view.setImageDrawable(roundedBitmapDrawable);
-    }
+    }*/
 
 }

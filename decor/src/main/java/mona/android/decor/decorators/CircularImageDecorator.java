@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Created by cheikhna on 06/03/2015.
  */
-public class CircularImageDecorator extends AttrsDecorator<ImageView> {
+public class CircularImageDecorator { /* extends AttrsDecorator<ImageView> {
 
     @NotNull
     @Override
@@ -38,6 +38,6 @@ public class CircularImageDecorator extends AttrsDecorator<ImageView> {
         roundedBitmapDrawable.setCornerRadius(Math.min(roundedBitmapDrawable.getMinimumWidth(),
                                         roundedBitmapDrawable.getMinimumHeight()) / 2.0F);
         view.setImageDrawable(roundedBitmapDrawable);
-    }
+    }*/
 
 }

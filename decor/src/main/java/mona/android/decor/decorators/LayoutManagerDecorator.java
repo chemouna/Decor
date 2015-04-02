@@ -11,12 +11,12 @@ import mona.android.decor.R;
 /**
  * Created by cheikhna on 02/04/2015.
  */
-public class LayoutManagerDecorator extends AttrsDecorator<RecyclerView> {
+public class LayoutManagerDecorator {/*extends AttrsDecorator<RecyclerView> {
     @NotNull
     @Override
     protected int[] attrs() {
-        return new int[] {R.attr.layoutManager, R.attr.layoutManagerOrientation/*,
-                            R.attr.animator*/};
+        return new int[] {R.attr.layoutManager, R.attr.layoutManagerOrientation*//*,
+                            R.attr.animator*//*};
     }
 
     @NotNull
@@ -39,10 +39,10 @@ public class LayoutManagerDecorator extends AttrsDecorator<RecyclerView> {
         }
     }
 
-    /**
+    *//**
      * may change name to RecyclerViewDecorator if it can have multiple rv decors +
      * adding an item animator
-     */
-
+     *//*
+*/
 
 }
