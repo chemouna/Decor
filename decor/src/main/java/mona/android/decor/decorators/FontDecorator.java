@@ -1,15 +1,5 @@
 package mona.android.decor.decorators;
 
-import android.graphics.Typeface;
-import android.util.TypedValue;
-import android.widget.TextView;
-
-import mona.android.decor.AttrsDecorator;
-
-import mona.android.decor.R;
-
-import org.jetbrains.annotations.NotNull;
-
 public class FontDecorator { /* extends AttrsDecorator<TextView> {
     @NotNull
     @Override

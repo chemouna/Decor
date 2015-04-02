@@ -1,19 +1,5 @@
 package mona.android.decor.decorators;
 
-import android.annotation.TargetApi;
-import android.graphics.drawable.AnimatedVectorDrawable;
-import android.os.Build;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
-import android.widget.ImageView;
-
-import org.jetbrains.annotations.NotNull;
-
-import mona.android.decor.AttrsDecorator;
-import mona.android.decor.R;
-
 /**
  * Created by mounacheikhna on 01/04/2015.
  */

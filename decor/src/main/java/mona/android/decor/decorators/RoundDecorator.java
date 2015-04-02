@@ -1,19 +1,5 @@
 package mona.android.decor.decorators;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.annotation.NonNull;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.util.TypedValue;
-import android.widget.ImageView;
-
-import org.jetbrains.annotations.NotNull;
-
-import hugo.weaving.DebugLog;
-import mona.android.decor.AttrsDecorator;
-import mona.android.decor.R;
-
 /**
  * Created by cheikhna on 17/02/2015.
  */

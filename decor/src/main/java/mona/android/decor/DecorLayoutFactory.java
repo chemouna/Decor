@@ -14,11 +14,11 @@ import hugo.weaving.DebugLog;
  * A small util class that wraps a layoutinflater and its factory to
  * apply a bunch of decorators.
  */
-public class DecoratorLayoutFactory extends LayoutFactoryWrapper {
+public class DecorLayoutFactory extends LayoutFactoryWrapper {
     Decor decor;
 
     @DebugLog
-    public DecoratorLayoutFactory(@NotNull LayoutInflater inflater, @Nullable LayoutInflater.Factory2 base, @NotNull Decor decor) {
+    public DecorLayoutFactory(@NotNull LayoutInflater inflater, @Nullable LayoutInflater.Factory2 base, @NotNull Decor decor) {
         super(inflater, base);
         this.decor = decor;
     }

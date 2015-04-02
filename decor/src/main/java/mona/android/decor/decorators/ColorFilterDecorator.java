@@ -1,13 +1,5 @@
 package mona.android.decor.decorators;
 
-import android.util.TypedValue;
-import android.widget.ImageView;
-
-import org.jetbrains.annotations.NotNull;
-
-import mona.android.decor.AttrsDecorator;
-import mona.android.decor.R;
-
 /**
  * Created by cheikhna on 01/03/2015.
  */

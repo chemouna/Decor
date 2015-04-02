@@ -1,13 +1,5 @@
 package mona.android.decor.decorators;
 
-import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
-
-import org.jetbrains.annotations.NotNull;
-
-import mona.android.decor.AttrsDecorator;
-import mona.android.decor.R;
-
 /**
  * Created by cheikhna on 02/04/2015.
  */

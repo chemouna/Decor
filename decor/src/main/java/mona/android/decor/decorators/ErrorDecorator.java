@@ -1,9 +1,6 @@
 package mona.android.decor.decorators;
 
-import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.util.TypedValue;
 import android.widget.EditText;
 
 import mona.android.decor.AttrsDecorator;
@@ -57,7 +54,6 @@ public class ErrorDecorator extends AttrsDecorator<EditText> {
     protected void apply(EditText view, @NotNull List<AttrsDecorator<EditText>.DecorParam> decorParams) {
         Drawable errorIcon = null;
         CharSequence errorText = null;
-        android.os.Debug.waitForDebugger();
         for (DecorParam decorParam : decorParams) {
             if(decorParam.getAttr() == R.attr.error_icon) {
                 errorIcon = view.getContext().getResources().getDrawable(decorParam.getValue().resourceId);

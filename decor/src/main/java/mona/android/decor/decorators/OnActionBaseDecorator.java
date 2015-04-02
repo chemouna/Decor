@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import hugo.weaving.DebugLog;
 import mona.android.decor.AttrsDecorator;
 
 /**
