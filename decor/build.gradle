@@ -4,12 +4,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.0-beta1'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
     }
 }
 
-apply plugin: 'com.android.library'
+//apply plugin: 'com.android.library'
+apply plugin: 'java'
 apply plugin: 'com.jakewharton.hugo'
 
 repositories {
@@ -19,7 +19,20 @@ repositories {
     }
 }
 
+configurations {
+    provided
+}
 
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
+dependencies {
+    compile 'org.jetbrains:annotations:13.0'
+    provided 'org.robolectric:android-all:5.0.0_r2-robolectric-0'
+}
+
+/*
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
@@ -50,3 +63,4 @@ dependencies {
     testCompile "org.mockito:mockito-core:1.9.5"
 
 }
+*/

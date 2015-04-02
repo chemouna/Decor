@@ -13,12 +13,12 @@ import android.view.View;
 public class DecorLayoutInflater extends PhoneLayoutInflater {
 
     private LayoutInflater.Factory2 wrappedFactory;
-    private Decor pretty;
+    private Decor decor;
 
     public DecorLayoutInflater(Decor pretty, final Activity activity) {
         super(activity);
 
-        this.pretty = pretty;
+        this.decor = pretty;
 
         // if the activity is a FragmentActivity from the support lib then lets wrap it
         // so the <fragment> tags still work
@@ -42,15 +42,15 @@ public class DecorLayoutInflater extends PhoneLayoutInflater {
         super.setFactory2(new DecorLayoutFactory(this, wrappedFactory, pretty));
     }
 
-    protected PrettyLayoutInflater(LayoutInflater original, Context newContext, LayoutInflater.Factory2 wrappedFactory, Pretty pretty) {
+    protected PrettyLayoutInflater(LayoutInflater original, Context newContext, LayoutInflater.Factory2 wrappedFactory, Decor decor) {
         super(original, newContext);
-        this.pretty = pretty;
-        super.setFactory2(new DecorLayoutFactory(this, wrappedFactory, pretty));
+        this.decor = this.decor;
+        super.setFactory2(new DecorLayoutFactory(this, wrappedFactory, this.decor));
     }
 
     @Override
     public LayoutInflater cloneInContext(Context newContext) {
-        return new DecorLayoutInflater(this, newContext, wrappedFactory, pretty);
+        return new DecorLayoutInflater(this, newContext, wrappedFactory, decor);
     }
 
     @Override
