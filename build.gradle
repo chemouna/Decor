@@ -1,0 +1,29 @@
+task wrapper(type: Wrapper) {
+    gradleVersion '2.3'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.0-beta2'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+    // Is Release Build?
+    ext.isReleaseVersion = has("release")
+    ext.versionCodeInt = getProperty('VERSION_CODE').toInteger()
+    version = VERSION_NAME
+}
+
+
+

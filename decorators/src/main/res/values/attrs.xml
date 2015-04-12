@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- all attributes here prefixed with decor to avoid conflicts with other apps & lib attributes -->
+
+    <attr name="decorTypefaceAsset" format="string" />
+    <attr name="decorErrorText" format="string" />
+    <attr name="decorErrorIcon" format="reference" />
+    <attr name="decorRound" format="reference" />
+    <attr name="decorCornerRadius" format="dimension" />
+    <attr name="decorOnTouch" />
+    <attr name="decorColorFilter" format="color" />
+    <attr name="decorCircular" format="boolean" />
+    <attr name="decorOnLongClick" />
+    <attr name="decorLayoutManager" />
+    <attr name="decorLayoutManagerOrientation" />
+    <attr name="decorBlur" format="boolean" />
+    <attr name="decorColorDescendents" format="boolean|reference" />
+    <attr name="decorAnimateSearch" format="boolean|reference" />
+    <attr name="decorOptimise" format="boolean" />
+
+    <declare-styleable name="DecorAutofit">
+        <attr name="decorAutofitText" format="boolean|reference" />
+        <attr name="decorSizeToFit" format="float|reference" />
+        <attr name="decorMinTextSize" format="reference" />
+        <attr name="decorPrecision" format="float|reference" />
+    </declare-styleable>
+
+</resources>
