@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:name="mona.android.decor.samples.SampleFragment"
+        android:name="com.mounacheikhna.decor.samples.SampleFragment"
         android:id="@+id/sample_frg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
