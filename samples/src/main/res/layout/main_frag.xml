@@ -55,5 +55,11 @@
         android:text="I'm a custom textview"
         app:decorTypefaceAsset="Ubuntu-M.ttf"/>
 
+    <mona.android.decor.samples.CustomImageView
+        android:id="@+id/customIv"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/ic_launcher"
+        app:decorColorFilter="@color/material_blue_grey_800"/>
 
 </LinearLayout>

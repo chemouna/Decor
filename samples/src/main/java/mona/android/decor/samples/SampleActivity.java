@@ -1,15 +1,14 @@
 package mona.android.decor.samples;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import mona.android.decor.DecorContextWrapper;
-import mona.android.decor.Decorator;
 import mona.android.decorators.Decorators;
 
-public class SampleActivity extends /*ActionBarActivity*/ /*FragmentActivity*/ Activity {
+public class SampleActivity extends FragmentActivity /*ActionBarActivity*/ /*Activity*/ {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

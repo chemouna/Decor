@@ -4,10 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * Created by chris on 17/12/14.
- * For Calligraphy.
- */
+
 class ReflectionUtils {
 
     static Field getField(Class clazz, String fieldName) {

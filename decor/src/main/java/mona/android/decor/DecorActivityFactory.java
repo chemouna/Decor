@@ -16,7 +16,7 @@ public interface DecorActivityFactory {
      * <pre>
      * {@code
      * public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-     *   return CalligraphyContextWrapper.get(getBaseContext()).onActivityCreateView(super.onCreateView(parent, name, context, attrs), attrs);
+     *   return DecorContextWrapper.get(getBaseContext()).onActivityCreateView(super.onCreateView(parent, name, context, attrs), attrs);
      * }
      * }
      * </pre>

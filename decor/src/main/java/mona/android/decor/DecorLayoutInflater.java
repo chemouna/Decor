@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
 
@@ -15,7 +16,6 @@ import java.util.Collection;
  * Created by cheikhna on 05/04/2015.
  */
 public class DecorLayoutInflater extends LayoutInflater implements DecorActivityFactory {
-    //TODO: If DecorActivityFactory is not realy needed delete it
 
     private static final String[] CLASS_PREFIX_LIST = {
             "android.widget.",
@@ -25,7 +25,8 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
     private final DecorFactory mDecorFactory;
     private Collection<Decorator> mDecorators;
     private boolean mSetPrivateFactory = false;
-    
+    private Field mConstructorArgs = null;
+
     public DecorLayoutInflater(LayoutInflater original, Context newContext, Collection<Decorator> decorators) {
         super(original, newContext);
         mDecorators = decorators;
@@ -168,15 +169,14 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
 
         @Override
         public View onCreateView(String name, Context context, AttributeSet attrs) {
-            //TODO: handle this commented case (cf. calligraphy)
-            /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
                 return  mDecorFactory.onViewCreated(
                             mInflater.createCustomViewInternal(
                                 null, mFactory.onCreateView(name, context, attrs), name, context, attrs
                         ),
                         context, attrs
                 );
-            }*/
+            }
             return mDecorFactory.onViewCreated(
                         mFactory.onCreateView(name, context, attrs),
                         name, null, context, attrs
@@ -224,8 +224,8 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
 
         private final DecorLayoutInflater mInflater;
 
-        public PrivateWrapperFactory2(Factory2 factory2, DecorLayoutInflater inflater, DecorFactory calligraphyFactory) {
-            super(factory2, calligraphyFactory);
+        public PrivateWrapperFactory2(Factory2 factory2, DecorLayoutInflater inflater, DecorFactory decorFactory) {
+            super(factory2, decorFactory);
             mInflater = inflater;
         }
 
@@ -242,11 +242,10 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
     }
 
 
-    //TODO: understand this and why we need it
     /**
      * Nasty method to inflate custom layouts that haven't been handled else where. If this fails it
      * will fall back through to the PhoneLayoutInflater method of inflating custom views where
-     * Calligraphy will NOT have a hook into.
+     * we will NOT have a hook into.
      *
      * @param parent      parent view
      * @param view        view if it has been inflated by this point, if this is not null this method
@@ -265,12 +264,7 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
         // We also maintain the Field reference and make it accessible which will make a pretty
         // significant difference to performance on Android 4.0+.
 
-        // If CustomViewCreation is off skip this.
-        //TODO: have a DecorConfig that activate either all decors or only needed one + possibility deactivate customViewCreate
-        //if (!DecorConfig.get().isCustomViewCreation()) return view;
-
-        //TODO: uncomment this implementation
-       /* if (view == null && name.indexOf('.') > -1) {
+        if (view == null && name.indexOf('.') > -1) {
             if (mConstructorArgs == null)
                 mConstructorArgs = ReflectionUtils.getField(LayoutInflater.class, "mConstructorArgs");
 
@@ -288,7 +282,7 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
                 mConstructorArgsArr[0] = lastContext;
                 ReflectionUtils.setValue(mConstructorArgs, this, mConstructorArgsArr);
             }
-        }*/
+        }
         return view;
     }
 
