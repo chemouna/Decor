@@ -34,11 +34,12 @@ the module decorators contains some examples of useful decorators that you can s
  more of them will be added soon.
 
 If you want to not apply all decorators :
-@Override
-protected void attachBaseContext(Context newBase) {
-    super.attachBaseContext(DecorContextWrapper.wrap(newBase)
-            .with(new FontDecorator());
-}
+
+            @Override
+            protected void attachBaseContext(Context newBase) {
+                super.attachBaseContext(DecorContextWrapper.wrap(newBase)
+                        .with(new FontDecorator());
+            }
 
 
 
