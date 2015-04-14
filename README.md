@@ -13,13 +13,14 @@ have you ever written AutofitTextViewWithFont to make a textview resizes it's te
  Decor comes to the rescue to solve this unnecessary class explosion:
     create AutoFitDecorator , FontDecorator, AnimateDecorator (See module decorators)
      and register them by overriding
+    ```java 
         @Override
         protected void attachBaseContext(Context newBase) {
             super.attachBaseContext(DecorContextWrapper.wrap(newBase)
                     .with(Decorators.getAll()));
         }
         in activity class and in your layout
-
+    ```
 ```xml
  <TextView
         android:layout_width="match_parent"
