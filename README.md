@@ -35,7 +35,7 @@ this has the advantage of reusing these decorators in other views.
 the module decorators contains some examples of useful decorators that you can start using now,
  more of them will be added soon.
 
-If you want to not apply all decorators :
+If you want to apply only a subset of decorators :
 
 ```java
 @Override
