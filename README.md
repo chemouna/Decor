@@ -12,14 +12,14 @@ have you ever written AutofitTextViewWithFont to make a textview resizes it's te
  animate it we can create another custom view AnimatedAutofitTextViewWithFont,
  Decor comes to the rescue to solve this unnecessary class explosion:
     create AutoFitDecorator , FontDecorator, AnimateDecorator (See module decorators)
-     and register them by overriding
+     and register them by overriding attachBaseContext in activity class and in your layout :
+     
     ```java 
         @Override
         protected void attachBaseContext(Context newBase) {
             super.attachBaseContext(DecorContextWrapper.wrap(newBase)
                     .with(Decorators.getAll()));
         }
-        in activity class and in your layout
     ```
 ```xml
  <TextView
