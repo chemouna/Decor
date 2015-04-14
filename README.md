@@ -57,7 +57,7 @@ repositories {
 
 dependencies {
     compile 'com.mounacheikhna:decor:0.1-SNAPSHOT@aar'
-    compile 'com.mounacheikhn:decorators:0.1-SNAPSHOT@aar'
+    compile 'com.mounacheikhna:decorators:0.1-SNAPSHOT@aar'
 }
 ```
 
