@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 
 def isReleaseBuild() {
-    project.ext.isReleaseVersion
+    return VERSION_NAME.contains("SNAPSHOT") == false
 }
 
 def getReleaseRepositoryUrl() {
@@ -23,15 +23,6 @@ def getRepositoryPassword() {
     return hasProperty('sonatypePassword') ? sonatypePassword : ""
 }
 
-
-// Debug Build or Release?
-if (isReleaseBuild()) {
-    println "RELEASE BUILD $version"
-} else {
-    version += "-SNAPSHOT"
-    println "DEBUG BUILD $version"
-}
-
 afterEvaluate { project ->
     uploadArchives {
         repositories {
@@ -39,7 +30,7 @@ afterEvaluate { project ->
                 beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
                 pom.groupId = GROUP
-                pom.version = version
+                pom.version = VERSION_NAME
                 pom.artifactId = POM_ARTIFACT_ID
 
                 repository(url: getReleaseRepositoryUrl()) {
