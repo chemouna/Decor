@@ -33,7 +33,7 @@ protected void attachBaseContext(Context newBase) {
 
 this has the advantage of reusing these decorators in other views.
 the module decorators contains some examples of useful decorators that you can start using now,
-or write your own by extending ```java AttrsDecorator<T>``` where T is the type of the view the decor will be applied on.
+or write your own by extending ``` AttrsDecorator<T>``` where T is the type of the view the decor will be applied on.
 
 If you want to apply only a subset of decorators :
 
@@ -44,6 +44,8 @@ protected void attachBaseContext(Context newBase) {
             .with(new FontDecorator());
 }
 ```
+
+Check the samples for a working example.
 
 Snapshot
 ========
