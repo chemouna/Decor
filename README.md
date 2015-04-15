@@ -7,8 +7,9 @@ without the need to extend and create a cutom view for each functionnality.
 Decor plugs into  Android layout inflation and applies custom attributes to views.
 this library was inspired by Pretty https://github.com/madisp/pretty.
 
-If ever written a custom view like AutofitTextViewWithFont : to make a textview resizes it's text and have a specific font
-and If you want to add animate you can write a custom view like AnimatedAutofitTextViewWithFont.
+If you have written a custom view like AutofitTextViewWithFont : to make a textview resizes it's text and have a specific font
+and If you want to  animate it you can write a custom view like AnimatedAutofitTextViewWithFont and if there's another runtime
+custom attribute you want to add you will have to yet another custom view.
  Decor comes to the rescue to solve this unnecessary class explosion by using a seperate decorator for each functionality :
     : AutoFitDecorator , FontDecorator, AnimateDecorator (See decorators module for examples of how to create a decorator)
      and register them in attachBaseContext :
@@ -32,7 +33,7 @@ protected void attachBaseContext(Context newBase) {
 
 this has the advantage of reusing these decorators in other views.
 the module decorators contains some examples of useful decorators that you can start using now,
-or write your own by extending AttrsDecorator<T> where T is the type of the view the decor will be applied on.
+or write your own by extending ```javaAttrsDecorator<T>``` where T is the type of the view the decor will be applied on.
 
 If you want to apply only a subset of decorators :
 
