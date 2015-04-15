@@ -3,15 +3,15 @@ Decor
 
 *Decor* is a library that applies decorators to android layout with additional attributes
 without the need to extend and create a cutom view for each functionnality.
+
 Decor plugs into  Android layout inflation and applies custom attributes to views.
 this library was inspired by Pretty https://github.com/madisp/pretty.
 
-have you ever written AutofitTextViewWithFont to make a textview resizes it's text to be
- no larger than the width of the view and to apply a font to it and for example if we want to
- animate it we can create another custom view AnimatedAutofitTextViewWithFont,
- Decor comes to the rescue to solve this unnecessary class explosion:
-    create AutoFitDecorator , FontDecorator, AnimateDecorator (See module decorators)
-     and register them by overriding attachBaseContext in activity class and in your layout :
+If ever written a custom view like AutofitTextViewWithFont : to make a textview resizes it's text and have a specific font
+and If you want to add animate you can write a custom view like AnimatedAutofitTextViewWithFont.
+ Decor comes to the rescue to solve this unnecessary class explosion by using a seperate decorator for each functionality :
+    : AutoFitDecorator , FontDecorator, AnimateDecorator (See decorators module for examples of how to create a decorator)
+     and register them in attachBaseContext :
      
 ```java 
 @Override
@@ -32,7 +32,7 @@ protected void attachBaseContext(Context newBase) {
 
 this has the advantage of reusing these decorators in other views.
 the module decorators contains some examples of useful decorators that you can start using now,
- more of them will be added soon.
+or write your own by extending AttrsDecorator<T> where T is the type of the view the decor will be applied on.
 
 If you want to apply only a subset of decorators :
 
