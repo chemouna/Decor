@@ -14,6 +14,7 @@ import com.mounacheikhna.decor.AttrsDecorator;
 /**
  * Created by mounacheikhna on 01/04/2015.
  */
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class SearchAnimateDecorator extends AttrsDecorator<ImageView> {
 
     private boolean expanded = false;

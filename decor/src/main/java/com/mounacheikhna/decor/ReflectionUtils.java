@@ -47,7 +47,9 @@ class ReflectionUtils {
         try {
             if (method == null) return;
             method.invoke(object, args);
-        } catch (IllegalAccessException | InvocationTargetException ignored) {
+        } catch (IllegalAccessException ignored) {
+            ignored.printStackTrace();
+        } catch (InvocationTargetException ignored) {
             ignored.printStackTrace();
         }
     }

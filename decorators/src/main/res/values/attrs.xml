@@ -18,6 +18,7 @@
     <attr name="decorColorDescendents" format="boolean|reference" />
     <attr name="decorAnimateSearch" format="boolean|reference" />
     <attr name="decorOptimise" format="boolean" />
+    <attr name="decorShimmer" format="boolean" />
 
     <declare-styleable name="DecorAutofit">
         <attr name="decorAutofitText" format="boolean|reference" />
