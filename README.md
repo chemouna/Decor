@@ -1,7 +1,7 @@
 Decor
 ======
 
-<a href='https://travis-ci.org/chemouna/Decor'><img src='https://travis-ci.org/chemouna/Decor.svg?branch=master'></a>
+<a href='https://travis-ci.org/chemouna/Decor/builds/'><img src='https://travis-ci.org/chemouna/Decor.svg?branch=master'></a>
 
 
 *Decor* is a library that applies decorators to android layout with additional attributes
