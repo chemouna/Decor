@@ -48,7 +48,10 @@ protected void attachBaseContext(Context newBase) {
 }
 ```
 
-Check the samples for a working example.
+Check the samples for a working example :
+
+![](images/decor_sample.png)
+
 
 Binaries
 ========
