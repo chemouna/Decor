@@ -12,7 +12,7 @@ this library was inspired by Pretty https://github.com/madisp/pretty.
 
 If you have written a custom view like AutofitTextViewWithFont : to make a textview resizes it's text and have a specific font
 and If you want to  animate it you can write a custom view like AnimatedAutofitTextViewWithFont and if there's another runtime
-custom attribute you want to add you will have to yet another custom view.
+custom attribute you want to add you will have to yet create another custom view.
  Decor comes to the rescue to solve this unnecessary class explosion by using a seperate decorator for each functionality :
     : AutoFitDecorator , FontDecorator, AnimateDecorator (See decorators module for examples of how to create a decorator)
      and register them in attachBaseContext :
