@@ -24,6 +24,8 @@ allprojects {
     ext.isReleaseVersion = has("release")
     ext.versionCodeInt = getProperty('VERSION_CODE').toInteger()
     version = VERSION_NAME
+    project.group = GROUP
+
 }
 
 

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.mounacheikhna.decor.app" >
-    <application >
-        <activity android:name="com.mounacheikhna.decor.app.CreatesFragActivity" />
-    </application>
-</manifest>

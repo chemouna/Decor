@@ -113,3 +113,7 @@ Licence
     See the License for the specific language governing permissions and
     limitations under the License.
 
+External code
+=======
+This project includes code from third parties:
+[pretty](https://github.com/madisp/pretty) by [Madis Pink](https://github.com/madisp). MIT licence.
