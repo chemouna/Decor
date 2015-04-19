@@ -81,8 +81,6 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
         mSetPrivateFactory = true;
     }
 
-    //TODO: understand this
-    
     @Override
     public void setFactory(Factory factory) {
         // Only set our factory and wrap calls to the Factory trying to be set!
@@ -93,8 +91,6 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
         }
     }
 
-    //TODO: understand this
-    
     @Override
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void setFactory2(Factory2 factory2) {
@@ -285,6 +281,5 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
         }
         return view;
     }
-
 
 }

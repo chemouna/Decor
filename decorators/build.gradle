@@ -27,7 +27,7 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile(project(':decor'))
+    compile project(':decor')
     compile "com.android.support:appcompat-v7:${project.ANDROID_SUPPORT_VERSION}"
     compile "com.android.support:palette-v7:${project.ANDROID_SUPPORT_VERSION}"
     compile "com.android.support:support-v4:${project.ANDROID_SUPPORT_VERSION}@aar"

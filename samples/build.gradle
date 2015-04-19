@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    compile(project(':decor'))
-    compile(project(':decorators'))
+    compile project(':decor')
+    compile project(':decorators')
     compile "com.android.support:support-v4:${project.ANDROID_SUPPORT_VERSION}"
 }

@@ -47,9 +47,11 @@ public class AutofitDecorator extends AttrsDecorator<TextView> {
 
     @Override
     protected int[] attrs() {
-        return new int[]{ R.attr.decorAutofitText, R.attr.decorSizeToFit, R.attr.decorMinTextSize, R.attr.decorPrecision};
+        return new int[]{ R.attr.decorAutofitText,
+                          R.attr.decorSizeToFit,
+                          R.attr.decorMinTextSize,
+                          R.attr.decorPrecision};
     }
-
 
     @Override
     protected Class<TextView> clazz() {

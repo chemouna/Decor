@@ -40,7 +40,6 @@ public class DecorContextWrapper extends ContextWrapper  {
 
     @Override
     public Object getSystemService(String name) {
-
         if(LAYOUT_INFLATER_SERVICE.equals(name)) {
             if(mInflater == null) {
                 mInflater = new DecorLayoutInflater(LayoutInflater.from(getBaseContext()), this, mDecorators);
