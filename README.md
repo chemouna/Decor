@@ -98,8 +98,8 @@ features or add new decorators.
 
 Licence
 =======
-
-    Copyright 2015 Mouna Cheikhna
+    Copyright (c) 2013 Madis Pink
+    Copyright (c) 2015 Mouna Cheikhna
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
