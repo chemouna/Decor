@@ -56,6 +56,8 @@ Check the samples for a working example :
 Binaries
 ========
 
+The API is still under heavy development and may change but you can try it now : 
+
 Binaries and dependency information for Maven, Ivy, Gradle and others can be found at [http://search.maven.org](http://search.maven.org/#search%7Cga%7C1%7Ccom.mounacheikhna).
 
 <a href='http://search.maven.org/#search%7Cga%7C1%7Ccom.mounacheikhna.decor'><img src='http://img.shields.io/maven-central/v/com.mounacheikhna/decor.svg'></a>
