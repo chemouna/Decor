@@ -3,13 +3,13 @@ package com.mounacheikhna.decorators;
 import android.annotation.TargetApi;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
+import com.mounacheikhna.decor.DecorValue;
 
 /**
  * Created by mounacheikhna on 01/04/2015.
@@ -38,9 +38,8 @@ public class SearchAnimateDecorator extends AttrsDecorator<ImageView> {
     }
 
     @Override
-    protected void apply(ImageView view, SparseArray<TypedValueInfo> values) {
-        TypedValueInfo typedValueInfo = values.get(R.attr.decorAnimateSearch);
-        boolean shouldAnimate = typedValueInfo.getParentArray().getBoolean(typedValueInfo.getIndexInValues(), false);
+    protected void apply(ImageView view, DecorValue decorValue) {
+        boolean shouldAnimate = decorValue.getBoolean(R.attr.decorAnimateSearch);
         if(!shouldAnimate) return;
 
         mIv = view;

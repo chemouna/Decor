@@ -31,11 +31,11 @@ public abstract class OnActionBaseDecorator extends AttrsDecorator<View> {
         return View.class;
     }
 
-    protected boolean onAction(TypedValue value) {
+    protected boolean onAction(String methodName) {
         Method mHandler = null;
         try {
             if(mContainerActivity != null) {
-                mHandler = mContainerActivity.getClass().getMethod(value.string.toString());
+                mHandler = mContainerActivity.getClass().getMethod(methodName);
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

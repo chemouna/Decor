@@ -1,9 +1,9 @@
 package com.mounacheikhna.decorators;
 
-import android.util.SparseArray;
 import android.widget.TextView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
+import com.mounacheikhna.decor.DecorValue;
 
 /**
  * Created by cheikhna on 15/04/2015.
@@ -21,8 +21,7 @@ public class ShimmerDecorator extends AttrsDecorator<TextView> {
     }
 
     @Override
-    protected void apply(TextView view, SparseArray<TypedValueInfo> values) {
-
-
+    protected void apply(TextView view, DecorValue decorValue) {
+        //TODO: implement
     }
 }

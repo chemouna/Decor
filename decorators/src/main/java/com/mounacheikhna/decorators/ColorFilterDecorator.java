@@ -1,9 +1,9 @@
 package com.mounacheikhna.decorators;
 
-import android.util.SparseArray;
 import android.widget.ImageView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
+import com.mounacheikhna.decor.DecorValue;
 
 
 /**
@@ -24,11 +24,11 @@ public class ColorFilterDecorator extends AttrsDecorator<ImageView> {
     }
 
     @Override
-    protected void apply(ImageView view, SparseArray<TypedValueInfo> values) {
-        TypedValueInfo typedValueInfo = values.get(R.attr.decorColorFilter);
-        int color = typedValueInfo.getParentArray().getColor(typedValueInfo.getIndexInValues(), -1);
-        if(color == -1) return;
-        view.setColorFilter(color);
+    protected void apply(ImageView view, DecorValue decorValue) {
+        int color = decorValue.getColor(R.attr.decorColorFilter);
+        if (color != 0) {
+            view.setColorFilter(color);
+        }
     }
 
 }

@@ -11,11 +11,11 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.SparseArray;
 import android.util.TypedValue;
 import android.widget.TextView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
+import com.mounacheikhna.decor.DecorValue;
 
 /**
  * A decorator for a TextView to resize it's text to be no larger than the width of the view.
@@ -59,10 +59,9 @@ public class AutofitDecorator extends AttrsDecorator<TextView> {
     }
 
     @Override
-    protected void apply(TextView view, SparseArray<TypedValueInfo> values) {
+    protected void apply(TextView view, DecorValue decorValue) {
         mTextView = view;
-        TypedValueInfo typedValueInfo = values.get(R.attr.decorAutofitText);
-        boolean isAutofit = typedValueInfo.getParentArray().getBoolean(typedValueInfo.getIndexInValues(), false);
+        boolean isAutofit = decorValue.getBoolean(R.attr.decorAutofitText);
         if(!isAutofit) return;
 
         float scaledDensity = mTextView.getContext().getResources().getDisplayMetrics().scaledDensity;
@@ -72,14 +71,11 @@ public class AutofitDecorator extends AttrsDecorator<TextView> {
 
         //TODO: deal with case when one of these values is absent
 
-        TypedValueInfo sizeToFitValueInfo = values.get(R.attr.decorSizeToFit);
-        sizeToFit = sizeToFitValueInfo.getParentArray().getBoolean(R.styleable.DecorAutofit_decorSizeToFit, sizeToFit);
+        sizeToFit = decorValue.getBoolean(R.attr.decorSizeToFit, sizeToFit);
 
-        TypedValueInfo minSizeValueInfo = values.get(R.attr.decorMinTextSize);
-        minTextSize = minSizeValueInfo.getParentArray().getDimensionPixelSize(R.styleable.DecorAutofit_decorMinTextSize, minTextSize);
+        minTextSize = decorValue.getDimensionPixelSize(R.attr.decorMinTextSize, minTextSize);
 
-        TypedValueInfo precisionValueInfo = values.get(R.attr.decorPrecision);
-        precision = precisionValueInfo.getParentArray().getFloat(R.styleable.DecorAutofit_decorPrecision, precision);
+        precision = decorValue.getFloat(R.attr.decorPrecision, precision);
 
         mPaint = new TextPaint();
         setSizeToFit(sizeToFit);

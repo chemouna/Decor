@@ -1,13 +1,13 @@
 package com.mounacheikhna.decorators;
 
 import android.os.Build;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
+import com.mounacheikhna.decor.DecorValue;
 import com.mounacheikhna.decorators.utils.BlurUtils;
 
 /**
@@ -28,9 +28,8 @@ public class BlurDecorator extends AttrsDecorator<View> {
     }
 
     @Override
-    protected void apply(View view, SparseArray<TypedValueInfo> values) {
-        TypedValueInfo typedValueInfo = values.get(R.attr.decorBlur);
-        boolean isBlur = typedValueInfo.getParentArray().getBoolean(typedValueInfo.getIndexInValues(), false);
+    protected void apply(View view, DecorValue decorValue) {
+        boolean isBlur = decorValue.getBoolean(R.attr.decorBlur);
         if(!isBlur || Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) return;
 
         //i'm guessing this part here doesnt work because i'm using the same blur as ngAndroid and they are
