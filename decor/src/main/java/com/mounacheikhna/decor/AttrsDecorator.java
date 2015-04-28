@@ -18,12 +18,15 @@ import android.view.View;
 public abstract class AttrsDecorator<T extends View> implements Decorator {
 
     @Override
-    public final void apply(View view, View parent, String name, Context context, AttributeSet attrs) {
+    public final void apply(View view, View parent, String name, Context context, AttributeSet attributeSet) {
         if (!clazz().isAssignableFrom(view.getClass())) {
             return;
         }
 
-        TypedArray values = context.getResources().obtainAttributes(attrs, attrs());
+        TypedArray values = context.getResources().obtainAttributes(attributeSet, attrs());
+        //attributeSet here represent the attributes in the xml for the view in which we have this decor
+        //( <ImageView android:layout_width=".." ... app:decorAttr1=".." />
+        //attrs() contains our own ids of decors = [decorAttr1, decorAttr2] (here f.ex ImageView has only one of the attribute) -> this could well be a test
         if (values == null) {
             return;
         }

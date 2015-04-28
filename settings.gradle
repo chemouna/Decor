@@ -1,1 +1,1 @@
-include ':decor', ':decorators', ':samples'
+include ':decor', ':decorators', ':samples', ':tests'
