@@ -1,11 +1,10 @@
-package com.mounacheikhna.decor.example;
+package com.mounacheikhna.decor;
 
 import android.util.Log;
 import android.view.View;
 
 import com.mounacheikhna.decor.AttrsDecorator;
 import com.mounacheikhna.decor.DecorValue;
-import com.mounacheikhna.decor.tests.R;
 
 /**
  * Created by cheikhna on 28/04/2015.
