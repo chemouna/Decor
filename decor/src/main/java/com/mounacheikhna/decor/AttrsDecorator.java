@@ -32,7 +32,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
         TypedArray values = obtainAttributes(context, attributeSet);
         //attributeSet here represent the attributes in the xml for the view in which we have this decor
         //( <ImageView android:layout_width=".." ... app:decorAttr1=".." />
-        //attrs() contains our own ids of decors = [decorAttr1, decorAttr2] (here f.ex ImageView has only one of the attribute) -> this could well be a test
+        //attrs() contains our own ids of decors = [decorAttr1, decorAttr2] (here f.ex ImageView has only one of the attribute)
         if (values == null) {
             return;
         }
