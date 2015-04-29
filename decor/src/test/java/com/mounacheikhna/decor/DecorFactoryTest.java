@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.test.mock.MockContext;
 import android.util.AttributeSet;
 import android.util.SparseIntArray;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -109,6 +111,25 @@ public class DecorFactoryTest {
         decorFactory.onViewCreated(textView, name, parent, context, attributeSet);
         //verify(textViewDecorator, times(1)).apply(textView, parent, name, context, attributeSet);
         verify(textViewDecorator, never()).apply(any(TextView.class), any(DecorValue.class));
+        verify(typedArray, times(1)).recycle();
+    }
+
+    @Test
+    public void decorAppliedWithAttrValue() throws Exception {
+        when(textViewDecorator.clazz()).thenReturn(TextView.class);
+        when(textViewDecorator.attrs()).thenReturn(new int[]{1});
+        decorators.add(textViewDecorator);
+        TypedArray typedArray = mock(TypedArray.class);
+        when(typedArray.length()).thenReturn(1);
+        when(typedArray.hasValue(0)).thenReturn(true);
+        when(typedArray.getValue(eq(0), any(TypedValue.class))).thenReturn(true);
+
+        textViewDecorator.mAttributeIndexes = mock(SparseIntArray.class);
+        when(textViewDecorator.obtainAttributes(context, attributeSet)).thenReturn(typedArray);
+        String name = "android.widget.TextView";
+        decorFactory.onViewCreated(textView, name, parent, context, attributeSet);
+        //verify(textViewDecorator).apply(textView, parent, name, context, attributeSet);
+        verify(textViewDecorator).apply(any(TextView.class), any(DecorValue.class));
         verify(typedArray, times(1)).recycle();
     }
 
