@@ -61,7 +61,6 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      *
      * @return a non-null array of android attr resource ids.
      */
-
     protected abstract int[] attrs();
 
     /**
@@ -69,7 +68,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      *
      * @return The class/typetoken for T
      */
-     abstract Class<T> clazz();
+     protected abstract Class<T> clazz();
 
     /**
      * This method will be called if a View of type T was inflated and it had one of the attributes
@@ -78,6 +77,6 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      * @param decorValue A {@link DecorValue} for each attribute.
      *
      */
-    protected abstract void apply(T view, DecorValue decorValue);
+     protected abstract void apply(T view, DecorValue decorValue);
 
 }
