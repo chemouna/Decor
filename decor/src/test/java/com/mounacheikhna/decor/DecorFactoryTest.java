@@ -127,5 +127,4 @@ public class DecorFactoryTest {
         when(typedArray.hasValue(0)).thenReturn(valueToReturn);
         return typedArray;
     }
-
 }
