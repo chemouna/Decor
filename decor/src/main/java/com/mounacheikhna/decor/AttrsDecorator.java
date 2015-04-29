@@ -80,3 +80,4 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      protected abstract void apply(T view, DecorValue decorValue);
 
 }
+
