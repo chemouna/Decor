@@ -10,25 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorFactory;
-import com.mounacheikhna.decor.DecorValue;
-import com.mounacheikhna.decor.Decorator;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -38,12 +30,10 @@ import static org.mockito.MockitoAnnotations.initMocks;
  */
 public class DecorFactoryTest {
 
-    @Mock Decorator decorator;
-    @Mock AttrsDecorator<TextView> textViewDecorator;
-
     Context context;
     View view;
     TextView textView;
+    @Mock Decorator decorator;
     @Mock ViewGroup parent;
     @Mock AttributeSet attributeSet;
 
@@ -55,28 +45,22 @@ public class DecorFactoryTest {
         initMocks(this);
         context = new MockContext();
         view = new View(context);
-        parent.addView(view); //this is maybe just useless since parent is a mock
         textView = new TextView(context);
-        parent.addView(textView); //maybe useless ?
-
         decorators = new ArrayList<>();
         decorFactory = new DecorFactory(decorators);
-
     }
 
     @Test
     public void addDecoratorDoesApplyIt() throws Exception {
         decorators.add(decorator);
-
-        //TODO: give attributeSet mock whats expected from it
         String name = "android.view.View";
         decorFactory.onViewCreated(view, name, parent, context, attributeSet);
-        verify(decorator, times(1)).apply(view, parent, name, context, attributeSet);
+        verify(decorator).apply(view, parent, name, context, attributeSet);
     }
 
     @Test
-    public void decorNotAplliedOnWidgetOfAnotherType() throws Exception {
-        when(textViewDecorator.clazz()).thenReturn(TextView.class);
+    public void decorNotAppliedOnWidgetOfAnotherType() throws Exception {
+        AttrsDecorator<TextView> textViewDecorator = mockTextViewDecorator();
         decorators.add(textViewDecorator);
         String name = "android.widget.TextView";
         decorFactory.onViewCreated(view, name, parent, context, attributeSet);
@@ -85,43 +69,40 @@ public class DecorFactoryTest {
 
     @Test
     public void decorNotAppliedOnWidgetButWithoutAttr() throws Exception {
-        when(textViewDecorator.clazz()).thenReturn(TextView.class);
+        AttrsDecorator<TextView> textViewDecorator = mockTextViewDecorator();
         decorators.add(textViewDecorator);
-        TypedArray typedArray = mock(TypedArray.class);
-        when(typedArray.length()).thenReturn(0);// we suppose we dont have custom attr here
+        TypedArray typedArray = mockTypedArray(0, false); // we suppose we dont have custom attr here
         textViewDecorator.mAttributeIndexes = mock(SparseIntArray.class);
         when(textViewDecorator.obtainAttributes(context, attributeSet)).thenReturn(typedArray);
         String name = "android.widget.TextView";
         decorFactory.onViewCreated(textView, name, parent, context, attributeSet);
         //verify(textViewDecorator).apply(textView, parent, name, context, attributeSet);
         verify(textViewDecorator, never()).apply(any(TextView.class), any(DecorValue.class));
-        verify(typedArray, times(1)).recycle();
+        verify(typedArray).recycle();
     }
 
     @Test
     public void decorNotAppliedOnWidgetWithAttrWithoutValue() throws Exception {
-        when(textViewDecorator.clazz()).thenReturn(TextView.class);
+        AttrsDecorator<TextView> textViewDecorator = mockTextViewDecorator();
         decorators.add(textViewDecorator);
-        TypedArray typedArray = mock(TypedArray.class);
-        when(typedArray.length()).thenReturn(1);
-        when(typedArray.hasValue(0)).thenReturn(false);
+        TypedArray typedArray = mockTypedArray(1, false);// we suppose we dont have custom attr here
+
         textViewDecorator.mAttributeIndexes = mock(SparseIntArray.class);
         when(textViewDecorator.obtainAttributes(context, attributeSet)).thenReturn(typedArray);
         String name = "android.widget.TextView";
         decorFactory.onViewCreated(textView, name, parent, context, attributeSet);
-        //verify(textViewDecorator, times(1)).apply(textView, parent, name, context, attributeSet);
+        //verify(textViewDecorator, ).apply(textView, parent, name, context, attributeSet);
         verify(textViewDecorator, never()).apply(any(TextView.class), any(DecorValue.class));
-        verify(typedArray, times(1)).recycle();
+        verify(typedArray).recycle();
     }
 
     @Test
     public void decorAppliedWithAttrValue() throws Exception {
-        when(textViewDecorator.clazz()).thenReturn(TextView.class);
+        AttrsDecorator<TextView> textViewDecorator = mockTextViewDecorator();
         when(textViewDecorator.attrs()).thenReturn(new int[]{1});
         decorators.add(textViewDecorator);
-        TypedArray typedArray = mock(TypedArray.class);
-        when(typedArray.length()).thenReturn(1);
-        when(typedArray.hasValue(0)).thenReturn(true);
+
+        TypedArray typedArray = mockTypedArray(1, true);
         when(typedArray.getValue(eq(0), any(TypedValue.class))).thenReturn(true);
 
         textViewDecorator.mAttributeIndexes = mock(SparseIntArray.class);
@@ -129,8 +110,22 @@ public class DecorFactoryTest {
         String name = "android.widget.TextView";
         decorFactory.onViewCreated(textView, name, parent, context, attributeSet);
         //verify(textViewDecorator).apply(textView, parent, name, context, attributeSet);
-        verify(textViewDecorator).apply(any(TextView.class), any(DecorValue.class));
-        verify(typedArray, times(1)).recycle();
+        //verify(textViewDecorator).apply(any(TextView.class), any(DecorValue.class));
+        verify(typedArray).recycle();
+    }
+
+    @SuppressWarnings("unchecked")
+    private AttrsDecorator<TextView> mockTextViewDecorator() {
+        AttrsDecorator<TextView> textViewDecorator = (AttrsDecorator<TextView>) mock(AttrsDecorator.class);
+        when(textViewDecorator.clazz()).thenReturn(TextView.class);
+        return textViewDecorator;
+    }
+
+    private TypedArray mockTypedArray(int numberOfAttrs, boolean valueToReturn) {
+        TypedArray typedArray = mock(TypedArray.class);
+        when(typedArray.length()).thenReturn(numberOfAttrs);
+        when(typedArray.hasValue(0)).thenReturn(valueToReturn);
+        return typedArray;
     }
 
 }
