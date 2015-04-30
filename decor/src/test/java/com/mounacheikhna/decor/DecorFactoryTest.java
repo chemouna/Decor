@@ -36,7 +36,9 @@ import static org.mockito.MockitoAnnotations.initMocks;
 public class DecorFactoryTest {
 
     /**
-     * A pb is that i'm kind of testing DecorFactory and AttrsDecorator .. pretty bad
+     * A pb is that i'm kind of testing DecorFactory and AttrsDecorator ..
+     * maybe seperate into DecorFactory that only tests that we dispatch to AttrsDecorator correctly
+     * and another AttrsDecoratorTest that does only test that one
      */
 
     Context context;
