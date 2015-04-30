@@ -24,7 +24,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
     }
 
     @Override
-    public final void apply(View view, View parent, String name, Context context, AttributeSet attributeSet) {
+    public void apply(View view, View parent, String name, Context context, AttributeSet attributeSet) {
         if (!clazz().isAssignableFrom(view.getClass())) {
             return;
         }
@@ -68,7 +68,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      *
      * @return The class/typetoken for T
      */
-     protected abstract Class<T> clazz();
+    protected abstract Class<T> clazz();
 
     /**
      * This method will be called if a View of type T was inflated and it had one of the attributes
@@ -77,7 +77,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      * @param decorValue A {@link DecorValue} for each attribute.
      *
      */
-     protected abstract void apply(T view, DecorValue decorValue);
+    protected abstract void apply(T view, DecorValue decorValue);
 
 }
 
