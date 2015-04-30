@@ -72,7 +72,7 @@ public class DecorFactoryTest {
         AttrsDecorator<TextView> textViewDecorator = mockTextViewDecorator();
         decorators.add(textViewDecorator);
         TypedArray typedArray = mockTypedArray(0, false); // we suppose we dont have custom attr here
-        textViewDecorator.mAttributeIndexes = mock(SparseIntArray.class);
+        textViewDecorator.attributeIndexes = mock(SparseIntArray.class);
         when(textViewDecorator.obtainAttributes(context, attributeSet)).thenReturn(typedArray);
         String name = "android.widget.TextView";
         decorFactory.onViewCreated(textView, name, parent, context, attributeSet);
@@ -87,11 +87,11 @@ public class DecorFactoryTest {
         decorators.add(textViewDecorator);
         TypedArray typedArray = mockTypedArray(1, false);// we suppose we dont have custom attr here
 
-        textViewDecorator.mAttributeIndexes = mock(SparseIntArray.class);
+        textViewDecorator.attributeIndexes = mock(SparseIntArray.class);
         when(textViewDecorator.obtainAttributes(context, attributeSet)).thenReturn(typedArray);
         String name = "android.widget.TextView";
         decorFactory.onViewCreated(textView, name, parent, context, attributeSet);
-        //verify(textViewDecorator, ).apply(textView, parent, name, context, attributeSet);
+        //verify(textViewDecorator).apply(textView, parent, name, context, attributeSet);
         verify(textViewDecorator, never()).apply(any(TextView.class), any(DecorValue.class));
         verify(typedArray).recycle();
     }
@@ -105,7 +105,7 @@ public class DecorFactoryTest {
         TypedArray typedArray = mockTypedArray(1, true);
         when(typedArray.getValue(eq(0), any(TypedValue.class))).thenReturn(true);
 
-        textViewDecorator.mAttributeIndexes = mock(SparseIntArray.class);
+        textViewDecorator.attributeIndexes = mock(SparseIntArray.class);
         when(textViewDecorator.obtainAttributes(context, attributeSet)).thenReturn(typedArray);
         String name = "android.widget.TextView";
         decorFactory.onViewCreated(textView, name, parent, context, attributeSet);

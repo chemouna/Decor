@@ -17,10 +17,11 @@ import android.view.View;
  */
 public abstract class AttrsDecorator<T extends View> implements Decorator {
 
-    SparseIntArray mAttributeIndexes;
+    SparseIntArray attributeIndexes;
+    TypedArray values;
 
     public AttrsDecorator() {
-        this.mAttributeIndexes = new SparseIntArray();
+        this.attributeIndexes = new SparseIntArray();
     }
 
     @Override
@@ -29,9 +30,9 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
             return;
         }
 
-        TypedArray values = obtainAttributes(context, attributeSet);
+        values = obtainAttributes(context, attributeSet);
         //attributeSet here represent the attributes in the xml for the view in which we have this decor
-        //( <ImageView android:layout_width=".." ... app:decorAttr1=".." />
+        //(<ImageView android:layout_width=".." ... app:decorAttr1=".." />
         //attrs() contains our own ids of decors = [decorAttr1, decorAttr2] (here f.ex ImageView has only one of the attribute)
         if (values == null) {
             return;
@@ -41,11 +42,11 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
             for (int i = 0; i < values.length(); i++) {
                 TypedValue buf = new TypedValue();
                 if (values.hasValue(i) && values.getValue(i, buf)) {
-                    mAttributeIndexes.put(attrs()[i], i);
+                    attributeIndexes.put(attrs()[i], i);
                 }
             }
-            if(mAttributeIndexes.size() > 0) {
-                apply((T) view, new DecorValue(values, mAttributeIndexes));
+            if(attributeIndexes.size() > 0) {
+                apply((T) view, new DecorValue(values, attributeIndexes));
             }
         } finally {
             values.recycle();
