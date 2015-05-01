@@ -20,11 +20,8 @@ import org.robolectric.annotation.Config;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Matchers.isNull;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -82,7 +79,6 @@ public class AttrsDecoratorTest {
 
     @Test
     public void decorAppliedWithAttrValue() throws Exception {
-        //TypedArray typedArray = spyTypedArray(1, true);
         TypedArray typedArray = mockTypedArray(1, true);
         Resources resources = mock(Resources.class);
         when(resources.obtainAttributes(attributeSet, attrsDecorator.attrs()))

@@ -1,12 +1,7 @@
 package com.mounacheikhna.decor;
 
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
-
-import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
-import com.mounacheikhna.decor.R;
 
 /**
  * Created by cheikhna on 28/04/2015.
