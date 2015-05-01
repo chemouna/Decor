@@ -21,10 +21,8 @@ public abstract class OnActionBaseDecorator extends AttrsDecorator<View> {
         mContainerActivity = activity;
     }
 
-
     @Override
     protected abstract int[] attrs();
-
 
     @Override
     protected Class<View> clazz() {

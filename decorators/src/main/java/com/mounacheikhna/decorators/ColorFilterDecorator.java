@@ -11,7 +11,6 @@ import com.mounacheikhna.decor.DecorValue;
  */
 public class ColorFilterDecorator extends AttrsDecorator<ImageView> {
 
-
     @Override
     protected int[] attrs() {
         return new int[]{R.attr.decorColorFilter};

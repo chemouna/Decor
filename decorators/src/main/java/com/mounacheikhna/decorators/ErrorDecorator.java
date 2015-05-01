@@ -16,7 +16,6 @@ public class ErrorDecorator extends AttrsDecorator<EditText> {
         return new int[] { R.attr.decorErrorIcon, R.attr.decorErrorText};
     }
 
-
     @Override
     protected Class<EditText> clazz() {
         return EditText.class;

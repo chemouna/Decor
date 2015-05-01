@@ -17,31 +17,46 @@ import android.view.View;
  */
 public abstract class AttrsDecorator<T extends View> implements Decorator {
 
+    SparseIntArray attributeIndexes;
+    TypedArray values;
+    DecorValue decorValue;
+
+    public AttrsDecorator() {
+        this.attributeIndexes = new SparseIntArray();
+    }
+
     @Override
-    public final void apply(View view, View parent, String name, Context context, AttributeSet attrs) {
+    public void apply(View view, View parent, String name, Context context, AttributeSet attributeSet) {
         if (!clazz().isAssignableFrom(view.getClass())) {
             return;
         }
 
-        TypedArray values = context.getResources().obtainAttributes(attrs, attrs());
+        values = obtainAttributes(context, attributeSet);
+        //attributeSet here represent the attributes in the xml for the view in which we have this decor
+        //(<ImageView android:layout_width=".." ... app:decorAttr1=".." />
+        //attrs() contains our own ids of decors = [decorAttr1, decorAttr2] (here f.ex ImageView has only one of the attribute)
         if (values == null) {
             return;
         }
 
-        SparseIntArray attrsIndexes = new SparseIntArray();
         try {
             for (int i = 0; i < values.length(); i++) {
                 TypedValue buf = new TypedValue();
                 if (values.hasValue(i) && values.getValue(i, buf)) {
-                    attrsIndexes.put(attrs()[i], i);
+                    attributeIndexes.put(attrs()[i], i);
                 }
             }
-            if(attrsIndexes.size() > 0) {
-                apply((T) view, new DecorValue(values, attrsIndexes));
+            if(attributeIndexes.size() > 0) {
+                decorValue = new DecorValue(values, attributeIndexes);
+                apply((T) view, decorValue);
             }
         } finally {
             values.recycle();
         }
+    }
+
+    TypedArray obtainAttributes(Context context, AttributeSet attributeSet) {
+        return context.getResources().obtainAttributes(attributeSet, attrs());
     }
 
     /**
@@ -49,7 +64,6 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      *
      * @return a non-null array of android attr resource ids.
      */
-
     protected abstract int[] attrs();
 
     /**
@@ -57,7 +71,6 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      *
      * @return The class/typetoken for T
      */
-
     protected abstract Class<T> clazz();
 
     /**
@@ -70,3 +83,4 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
     protected abstract void apply(T view, DecorValue decorValue);
 
 }
+
