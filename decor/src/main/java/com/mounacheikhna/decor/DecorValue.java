@@ -13,33 +13,33 @@ import android.util.SparseIntArray;
  * TODO: add more doc
  */
 public class DecorValue {
-    private TypedArray mParentArray;
-    private SparseIntArray mAttributeIndexes;
+    TypedArray parentArray;
+    SparseIntArray attributeIndexes;
 
     DecorValue(TypedArray parentArray, SparseIntArray attributeIndexes) {
-        this.mParentArray = parentArray;
-        this.mAttributeIndexes = attributeIndexes;
+        this.parentArray = parentArray;
+        this.attributeIndexes = attributeIndexes;
     }
 
     //maybe just delegate or extends from android's TypedArray or TypedValue
     //that already do this and have these methods defined
 
     public Drawable getDrawable(int attr) {
-        int index = mAttributeIndexes.get(attr);
+        int index = attributeIndexes.get(attr);
         if (index <= 0) return null; //maybe getDrawable of TypedValue already takes care of this ?
-        return mParentArray.getDrawable(mAttributeIndexes.valueAt(attr));
+        return parentArray.getDrawable(attributeIndexes.valueAt(attr));
     }
 
     public String getString(int attr) {
-        int index = mAttributeIndexes.get(attr);
+        int index = attributeIndexes.get(attr);
         if(index <= 0) return null; //TODO : maybe throw an exception ?
-        return mParentArray.getString(index);
+        return parentArray.getString(index);
     }
 
     public int getColor(int attr) {
-        int index = mAttributeIndexes.get(attr);
+        int index = attributeIndexes.get(attr);
         if (index <= 0) return -1;
-        return mParentArray.getColor(index, -1);
+        return parentArray.getColor(index, -1);
     }
 
     public boolean getBoolean(int attr) {
@@ -47,22 +47,22 @@ public class DecorValue {
     }
 
     public boolean getBoolean(int attr, boolean defaultValue) {
-        int index = mAttributeIndexes.get(attr);
+        int index = attributeIndexes.get(attr);
         if(index <= 0) return defaultValue;
-        return mParentArray.getBoolean(index, defaultValue);
+        return parentArray.getBoolean(index, defaultValue);
     }
 
     public int getDimensionPixelSize(int attr, int defaultValue) {
-        int index = mAttributeIndexes.get(attr);
+        int index = attributeIndexes.get(attr);
         if(index <= 0) return defaultValue;
-        return mParentArray.getDimensionPixelSize(index, defaultValue);
+        return parentArray.getDimensionPixelSize(index, defaultValue);
     }
 
     public float getFloat(int attr, float defaultValue) {
         //TODO: refactor these two lines in a single method
-        int index = mAttributeIndexes.get(attr);
+        int index = attributeIndexes.get(attr);
         if(index <= 0) return defaultValue;
-        return mParentArray.getFloat(index, defaultValue);
+        return parentArray.getFloat(index, defaultValue);
     }
 
 }

@@ -15,7 +15,7 @@ public class TestAttrsDecorator extends AttrsDecorator<TextView> {
 
     @Override
     protected int[] attrs() {
-        return new int[] {R.attr.decorAttr1};
+        return new int[] {R.attr.decorAttr};
     }
 
     @Override

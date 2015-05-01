@@ -19,6 +19,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
 
     SparseIntArray attributeIndexes;
     TypedArray values;
+    DecorValue decorValue;
 
     public AttrsDecorator() {
         this.attributeIndexes = new SparseIntArray();
@@ -46,7 +47,8 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
                 }
             }
             if(attributeIndexes.size() > 0) {
-                apply((T) view, new DecorValue(values, attributeIndexes));
+                decorValue = new DecorValue(values, attributeIndexes);
+                apply((T) view, decorValue);
             }
         } finally {
             values.recycle();
