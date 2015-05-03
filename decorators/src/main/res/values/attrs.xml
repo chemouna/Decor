@@ -3,24 +3,54 @@
 
     <!-- all attributes here prefixed with decor to avoid conflicts with other apps & lib attributes -->
 
-    <attr name="decorTypefaceAsset" format="string" />
-    <attr name="decorErrorText" format="string" />
-    <attr name="decorErrorIcon" format="reference" />
+    <declare-styleable name="FontDecorator">
+        <attr name="decorTypefaceAsset" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ErrorDecorator">
+        <attr name="decorErrorText" format="string" />
+        <attr name="decorErrorIcon" format="reference" />
+    </declare-styleable>
+
     <attr name="decorRound" format="reference" />
     <attr name="decorCornerRadius" format="dimension" />
-    <attr name="decorOnTouch" />
-    <attr name="decorColorFilter" format="color" />
-    <attr name="decorCircular" format="boolean" />
-    <attr name="decorOnLongClick" />
-    <attr name="decorLayoutManager" />
-    <attr name="decorLayoutManagerOrientation" />
-    <attr name="decorBlur" format="boolean" />
-    <attr name="decorColorDescendents" format="boolean|reference" />
-    <attr name="decorAnimateSearch" format="boolean|reference" />
-    <attr name="decorOptimise" format="boolean" />
-    <attr name="decorShimmer" format="boolean" />
 
-    <declare-styleable name="DecorAutofit">
+    <declare-styleable name="OnTouchDecorator">
+        <attr name="decorOnTouch" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="ColorFilterDecorator">
+        <attr name="decorColorFilter" format="color" />
+    </declare-styleable>
+
+    <attr name="decorCircular" format="boolean" />
+
+    <declare-styleable name="OnLongClickDecorator">
+        <attr name="decorOnLongClick" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="LayoutManagerDecorator">
+        <attr name="decorLayoutManager" format="string"/>
+        <attr name="decorLayoutManagerOrientation" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="BlurDecorator">
+        <attr name="decorBlur" format="boolean" />
+    </declare-styleable>
+
+    <attr name="decorColorDescendents" format="boolean|reference" />
+
+    <declare-styleable name="SearchAnimateDecorator">
+        <attr name="decorAnimateSearch" format="boolean|reference" />
+    </declare-styleable>
+
+    <attr name="decorOptimise" format="boolean" />
+
+    <declare-styleable name="ShimmerDecorator">
+        <attr name="decorShimmer" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="AutofitDecorator">
         <attr name="decorAutofitText" format="boolean|reference" />
         <attr name="decorSizeToFit" format="float|reference" />
         <attr name="decorMinTextSize" format="reference" />

@@ -1,5 +1,6 @@
 package com.mounacheikhna.decorators;
 
+import android.content.res.TypedArray;
 import android.widget.TextView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
@@ -9,6 +10,11 @@ import com.mounacheikhna.decor.DecorValue;
  * Created by cheikhna on 15/04/2015.
  */
 public class ShimmerDecorator extends AttrsDecorator<TextView> {
+
+    @Override
+    protected int[] styleable() {
+        return R.styleable.SearchAnimateDecorator;
+    }
 
     @Override
     protected int[] attrs() {
@@ -21,7 +27,7 @@ public class ShimmerDecorator extends AttrsDecorator<TextView> {
     }
 
     @Override
-    protected void apply(TextView view, DecorValue decorValue) {
+    protected void apply(TextView view, TypedArray typedArray) {
         //TODO: implement
     }
 }
