@@ -20,11 +20,6 @@ public class OnLongClickDecorator extends OnActionBaseDecorator {
     }
 
     @Override
-    protected int[] attrs() {
-        return new int[]{R.attr.decorOnLongClick};
-    }
-
-    @Override
     protected void apply(View view, final TypedArray typedArray) {
         view.setOnLongClickListener(new OnLongClickListener() {
             @Override

@@ -21,9 +21,6 @@ public abstract class OnActionBaseDecorator extends AttrsDecorator<View> {
     }
 
     @Override
-    protected abstract int[] attrs();
-
-    @Override
     protected Class<View> clazz() {
         return View.class;
     }

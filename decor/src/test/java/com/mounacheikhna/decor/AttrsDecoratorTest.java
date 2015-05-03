@@ -73,8 +73,8 @@ public class AttrsDecoratorTest {
         String name = "android.widget.TextView";
         attrsDecorator.apply(textView, parent, name, context, attributeSet);
         assertThat(attrsDecorator.values).isNotNull();
-        assertThat(attrsDecorator.attributeIndexes.size()).isEqualTo(0);
         verify(typedArray).recycle();
+        assertThat(attrsDecorator.getDecorStrValue()).isNull();
     }
 
     @Test
@@ -86,7 +86,6 @@ public class AttrsDecoratorTest {
         attrsDecorator.apply(textView, parent, name, context, attributeSet);
         assertThat(attrsDecorator.values).isNotNull();
         assertThat(attrsDecorator.values.length()).isGreaterThan(0);
-        assertThat(attrsDecorator.attributeIndexes.size()).isGreaterThan(0);
         verify(typedArray).recycle();
         assertThat(attrsDecorator.getDecorStrValue()).isEqualTo("test");
     }
@@ -95,17 +94,11 @@ public class AttrsDecoratorTest {
         doReturn(typedArray).when(attrsDecorator).obtainAttributes(context, attributeSet);
     }
 
-    private void mockResources(TypedArray typedArray) {
-        Resources resources = mock(Resources.class);
-        when(resources.obtainAttributes(attributeSet, attrsDecorator.attrs())).thenReturn(typedArray);
-        when(context.getResources()).thenReturn(resources);
-    }
-
-    private void mockTheme(TypedArray typedArray) {
+    /*private void mockTheme(TypedArray typedArray) {
         Resources.Theme theme = mock(Resources.Theme.class);
         when(theme.obtainStyledAttributes(attributeSet, attrsDecorator.styleable(), 0, 0)).thenReturn(typedArray);
         when(context.getTheme()).thenReturn(theme);
-    }
+    }*/
 
     private TypedArray mockTypedArray(int length, boolean valueToReturn) {
         TypedArray typedArray = mock(TypedArray.class);

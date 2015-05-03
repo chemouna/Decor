@@ -16,11 +16,6 @@ public class ShimmerDecorator extends AttrsDecorator<TextView> {
     }
 
     @Override
-    protected int[] attrs() {
-        return new int[] {R.attr.decorShimmer};
-    }
-
-    @Override
     protected Class<TextView> clazz() {
         return TextView.class;
     }

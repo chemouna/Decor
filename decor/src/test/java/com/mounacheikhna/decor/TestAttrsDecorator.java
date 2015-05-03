@@ -15,10 +15,10 @@ public class TestAttrsDecorator extends AttrsDecorator<TextView> {
         return R.styleable.DecorExample;
     }
 
-    @Override
+/*    @Override
     protected int[] attrs() {
         return new int[] {R.attr.decorAttr};
-    }
+    }*/
 
     @Override
     protected Class<TextView> clazz() {

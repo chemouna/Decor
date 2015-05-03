@@ -22,11 +22,6 @@ public class OnTouchDecorator extends OnActionBaseDecorator {
     }
 
     @Override
-    protected int[] attrs() {
-        return new int[]{R.attr.decorOnTouch};
-    }
-
-    @Override
     protected void apply(View view, final TypedArray typedArray) {
         view.setOnTouchListener(new OnTouchListener() {
             @Override

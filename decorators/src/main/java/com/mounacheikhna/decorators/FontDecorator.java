@@ -15,12 +15,6 @@ public class FontDecorator extends AttrsDecorator<TextView> {
     }
 
     @Override
-    protected int[] attrs() {
-        return new int[] { R.attr.decorTypefaceAsset};
-    }
-
-
-    @Override
     protected Class<TextView> clazz() {
         return TextView.class;
     }

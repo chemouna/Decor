@@ -16,11 +16,6 @@ public class ColorFilterDecorator extends AttrsDecorator<ImageView> {
         return R.styleable.ColorFilterDecorator;
     }
 
-    @Override
-    protected int[] attrs() {
-        return new int[]{R.attr.decorColorFilter};
-    }
-
 
     @Override
     protected Class<ImageView> clazz() {

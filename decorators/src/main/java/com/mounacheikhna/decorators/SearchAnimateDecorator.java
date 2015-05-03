@@ -32,12 +32,6 @@ public class SearchAnimateDecorator extends AttrsDecorator<ImageView> {
     }
 
     @Override
-    protected int[] attrs() {
-        return new int[]{R.attr.decorAnimateSearch};
-    }
-
-
-    @Override
     protected Class<ImageView> clazz() {
         return ImageView.class;
     }

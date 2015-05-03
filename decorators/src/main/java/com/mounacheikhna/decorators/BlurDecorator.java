@@ -21,12 +21,6 @@ public class BlurDecorator extends AttrsDecorator<View> {
     }
 
     @Override
-    protected int[] attrs() {
-        return new int[]{R.attr.decorBlur};
-    }
-
-
-    @Override
     protected Class<View> clazz() {
         return View.class;
     }
