@@ -11,7 +11,7 @@ import android.view.View;
  * A base class for a decorator that transform certain View subtypes with certain attributes. Useful
  * when you want to extend standard layout inflation to add your own attributes to system widgets.
  * If a view with type {@code View&lt;? extends T&gt;} is inflated and it has one of the attributes
- * returned by the {@link AttrsDecorator#attrs()} method then {@link AttrsDecorator#apply(View, DecorValue)}
+ * returned by the {@link AttrsDecorator#attrs()} method then {@link AttrsDecorator#apply(View, TypedArray)}
  * will be invoked for that view.
  * @param <T> The type or parent type of View that this decorator applies to.
  */
@@ -19,7 +19,6 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
 
     SparseIntArray attributeIndexes;
     TypedArray values;
-    DecorValue decorValue;
 
     public AttrsDecorator() {
         this.attributeIndexes = new SparseIntArray();
@@ -32,14 +31,6 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
         }
 
         values = obtainAttributes(context, attributeSet);
-        //we should be using this public TypedArray obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)
-        //instead to apply also default styles and theme
-        //TODO: NOP this doesnt work wih styles set int styles.xml which probably means that they dont work through themes too
-
-        /*if (values == null) {
-            return;
-        }*/
-
         if(values == null || values.length() == 0) return;
 
         try {
@@ -50,8 +41,7 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
                 }
             }
             if(attributeIndexes.size() > 0) {
-                decorValue = new DecorValue(values, attributeIndexes);
-                apply((T) view, decorValue);
+                apply((T) view, values);
             }
         } finally {
             values.recycle();
@@ -59,18 +49,8 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
     }
 
     TypedArray obtainAttributes(Context context, AttributeSet attributeSet) {
-        //return context.getResources().obtainAttributes(attributeSet, attrs());
         return context.getTheme().obtainStyledAttributes(attributeSet, styleable(), 0, 0);
     }
-
-    /*static boolean isTypedArrayEmpty(TypedArray typedArray) {
-        for (int i = 0; i < typedArray.length(); i++) {
-            if(typedArray.getInt(i, -1) != 0) {
-                return false;
-            }
-        }
-        return true;
-    }*/
 
     protected abstract int[] styleable();
 
@@ -92,10 +72,10 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
      * This method will be called if a View of type T was inflated and it had one of the attributes
      * specified by {@link AttrsDecorator#attrs()} set.
      * @param view  The view object that is being decorated.
-     * @param decorValue A {@link DecorValue} for each attribute.
+     * @param typedArray A {@link TypedArray} for attributes.
      *
      */
-    protected abstract void apply(T view, DecorValue decorValue);
+    protected abstract void apply(T view, TypedArray typedArray);
 
 }
 

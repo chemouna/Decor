@@ -86,15 +86,15 @@ public class AttrsDecoratorTest {
     @Test
     public void decorAppliedWithAttrValue() throws Exception {
         TypedArray typedArray = mockTypedArray(1, true);
+        when(typedArray.getString(0)).thenReturn("test");
         spyWithTypedArray(typedArray);
         String name = "android.widget.TextView";
         attrsDecorator.apply(textView, parent, name, context, attributeSet);
         assertThat(attrsDecorator.values).isNotNull();
         assertThat(attrsDecorator.values.length()).isGreaterThan(0);
-        assertThat(attrsDecorator.decorValue).isNotNull();
-        assertThat(attrsDecorator.attributeIndexes).isNotNull();
         assertThat(attrsDecorator.attributeIndexes.size()).isGreaterThan(0);
         verify(typedArray).recycle();
+        assertThat(attrsDecorator.getDecorStrValue()).isEqualTo("test");
     }
 
     private void spyWithTypedArray(TypedArray typedArray) {

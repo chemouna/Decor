@@ -1,5 +1,6 @@
 package com.mounacheikhna.decor;
 
+import android.content.res.TypedArray;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -7,6 +8,8 @@ import android.widget.TextView;
  * Created by cheikhna on 28/04/2015.
  */
 public class TestAttrsDecorator extends AttrsDecorator<TextView> {
+
+    private String decorStrValue;
 
     @Override
     protected int[] styleable() {
@@ -24,13 +27,11 @@ public class TestAttrsDecorator extends AttrsDecorator<TextView> {
     }
 
     @Override
-    protected void apply(TextView textView, DecorValue decorValue) {
-        //Log.d("TestAttrsDecorator", "Test");
-        //textView.getContext().obtainStyledAttributes(
-                //R.styleable.DecorExample_decorAttr, R.attr.decorAttr;
-                //R.styleable.DecorExample, R.attr.decorAttr;
-        String decorStrValue = decorValue.parentArray.getString(R.styleable.DecorExample_decorAttr);
-
+    protected void apply(TextView textView, TypedArray typedArray) {
+        decorStrValue = typedArray.getString(R.styleable.DecorExample_decorAttr);
     }
 
+    public String getDecorStrValue() {
+        return decorStrValue;
+    }
 }
