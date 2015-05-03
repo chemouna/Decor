@@ -21,12 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/textview_example"
-
-        app:decorErrorIcon="@drawable/ic_error_et"
+        style="@style/decoratedEditText"/>
+        <!--app:decorErrorIcon="@drawable/ic_error_et"
         app:decorErrorText="Error"
-        app:decorTypefaceAsset="Ubuntu-M.ttf"/>
-
-<!--        style="@style/decoratedEditText"/>-->
+        app:decorTypefaceAsset="Ubuntu-M.ttf"/>-->
 
     <Button
         android:layout_width="match_parent"
