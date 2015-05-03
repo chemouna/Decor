@@ -1,15 +1,20 @@
 package com.mounacheikhna.decorators;
 
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.widget.EditText;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 /**
  * Created by cheikhna on 09/02/2015.
  */
 public class ErrorDecorator extends AttrsDecorator<EditText> {
+
+    @Override
+    protected int[] styleable() {
+        return R.styleable.ErrorDecorator;
+    }
 
     @Override
     protected int[] attrs() {
@@ -22,9 +27,9 @@ public class ErrorDecorator extends AttrsDecorator<EditText> {
     }
 
     @Override
-    protected void apply(EditText view,  DecorValue decorValue) {
-        Drawable errorIcon = decorValue.getDrawable(R.attr.decorErrorIcon);
-        CharSequence errorText = decorValue.getString(R.attr.decorErrorText);
+    protected void apply(EditText view, TypedArray typedArray) {
+        Drawable errorIcon = typedArray.getDrawable(R.styleable.ErrorDecorator_decorErrorIcon);
+        CharSequence errorText = typedArray.getString(R.styleable.ErrorDecorator_decorErrorText);
         view.setError(errorText, errorIcon);
     }
 

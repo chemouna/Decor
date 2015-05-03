@@ -1,11 +1,10 @@
 package com.mounacheikhna.decorators;
 
 import android.app.Activity;
+import android.content.res.TypedArray;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-
-import com.mounacheikhna.decor.DecorValue;
 
 /**
  * Created by cheikhna on 17/02/2015.
@@ -18,16 +17,21 @@ public class OnTouchDecorator extends OnActionBaseDecorator {
 
 
     @Override
+    protected int[] styleable() {
+        return R.styleable.OnTouchDecorator;
+    }
+
+    @Override
     protected int[] attrs() {
         return new int[]{R.attr.decorOnTouch};
     }
 
     @Override
-    protected void apply(View view, final DecorValue decorValue) {
+    protected void apply(View view, final TypedArray typedArray) {
         view.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                return onAction(decorValue.getString(R.attr.decorOnTouch));
+                return onAction(typedArray.getString(R.styleable.OnTouchDecorator_decorOnTouch));
             }
         });
     }

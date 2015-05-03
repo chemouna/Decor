@@ -15,13 +15,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -35,15 +38,16 @@ public class AttrsDecoratorTest {
 
     @Mock View view;
     @Mock TextView textView;
-    @Mock Context context;
     @Mock ViewGroup parent;
     @Mock AttributeSet attributeSet;
-    private TestAttrsDecorator attrsDecorator;
+    Context context;
+    TestAttrsDecorator attrsDecorator;
 
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        attrsDecorator = new TestAttrsDecorator();
+        context = RuntimeEnvironment.application;
+        attrsDecorator = spy(new TestAttrsDecorator()); //spying on this object under test is temporary TODO: don't use Spy
     }
 
     @Test
@@ -57,9 +61,7 @@ public class AttrsDecoratorTest {
     @Test
     public void decorNotAppliedOnWidgetButWithoutAttr() throws Exception {
         String name = "android.widget.TextView";
-        Resources resources = mock(Resources.class);
-        when(resources.obtainAttributes(attributeSet, attrsDecorator.attrs())).thenReturn(null);
-        when(context.getResources()).thenReturn(resources);
+        spyWithTypedArray(null);
         attrsDecorator.apply(textView, parent, name, context, attributeSet);
         assertThat(attrsDecorator.values).isNull();
     }
@@ -67,9 +69,7 @@ public class AttrsDecoratorTest {
     @Test
     public void decorNotAppliedOnWidgetWithAttrWithoutValue() throws Exception {
         TypedArray typedArray = mockTypedArray(1, false);// we suppose we dont have custom attr here
-        Resources resources = mock(Resources.class);
-        when(resources.obtainAttributes(attributeSet, attrsDecorator.attrs())).thenReturn(typedArray);
-        when(context.getResources()).thenReturn(resources);
+        spyWithTypedArray(typedArray);
         String name = "android.widget.TextView";
         attrsDecorator.apply(textView, parent, name, context, attributeSet);
         assertThat(attrsDecorator.values).isNotNull();
@@ -80,17 +80,31 @@ public class AttrsDecoratorTest {
     @Test
     public void decorAppliedWithAttrValue() throws Exception {
         TypedArray typedArray = mockTypedArray(1, true);
-        Resources resources = mock(Resources.class);
-        when(resources.obtainAttributes(attributeSet, attrsDecorator.attrs()))
-                                .thenReturn(typedArray);
-        when(context.getResources()).thenReturn(resources);
+        when(typedArray.getString(0)).thenReturn("test");
+        spyWithTypedArray(typedArray);
         String name = "android.widget.TextView";
         attrsDecorator.apply(textView, parent, name, context, attributeSet);
         assertThat(attrsDecorator.values).isNotNull();
-        assertThat(attrsDecorator.decorValue).isNotNull();
-        assertThat(attrsDecorator.attributeIndexes).isNotNull();
+        assertThat(attrsDecorator.values.length()).isGreaterThan(0);
         assertThat(attrsDecorator.attributeIndexes.size()).isGreaterThan(0);
         verify(typedArray).recycle();
+        assertThat(attrsDecorator.getDecorStrValue()).isEqualTo("test");
+    }
+
+    private void spyWithTypedArray(TypedArray typedArray) {
+        doReturn(typedArray).when(attrsDecorator).obtainAttributes(context, attributeSet);
+    }
+
+    private void mockResources(TypedArray typedArray) {
+        Resources resources = mock(Resources.class);
+        when(resources.obtainAttributes(attributeSet, attrsDecorator.attrs())).thenReturn(typedArray);
+        when(context.getResources()).thenReturn(resources);
+    }
+
+    private void mockTheme(TypedArray typedArray) {
+        Resources.Theme theme = mock(Resources.Theme.class);
+        when(theme.obtainStyledAttributes(attributeSet, attrsDecorator.styleable(), 0, 0)).thenReturn(typedArray);
+        when(context.getTheme()).thenReturn(theme);
     }
 
     private TypedArray mockTypedArray(int length, boolean valueToReturn) {

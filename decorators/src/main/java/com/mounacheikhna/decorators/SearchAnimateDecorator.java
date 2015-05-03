@@ -1,6 +1,7 @@
 package com.mounacheikhna.decorators;
 
 import android.annotation.TargetApi;
+import android.content.res.TypedArray;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 /**
  * Created by mounacheikhna on 01/04/2015.
@@ -27,6 +27,11 @@ public class SearchAnimateDecorator extends AttrsDecorator<ImageView> {
 
 
     @Override
+    protected int[] styleable() {
+        return R.styleable.SearchAnimateDecorator;
+    }
+
+    @Override
     protected int[] attrs() {
         return new int[]{R.attr.decorAnimateSearch};
     }
@@ -38,8 +43,8 @@ public class SearchAnimateDecorator extends AttrsDecorator<ImageView> {
     }
 
     @Override
-    protected void apply(ImageView view, DecorValue decorValue) {
-        boolean shouldAnimate = decorValue.getBoolean(R.attr.decorAnimateSearch);
+    protected void apply(ImageView view, TypedArray typedArray) {
+        boolean shouldAnimate = typedArray.getBoolean(R.styleable.SearchAnimateDecorator_decorAnimateSearch, false);
         if(!shouldAnimate) return;
 
         mIv = view;

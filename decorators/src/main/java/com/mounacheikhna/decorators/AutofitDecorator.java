@@ -6,6 +6,7 @@ package com.mounacheikhna.decorators;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -15,7 +16,6 @@ import android.util.TypedValue;
 import android.widget.TextView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 /**
  * A decorator for a TextView to resize it's text to be no larger than the width of the view.
@@ -46,6 +46,11 @@ public class AutofitDecorator extends AttrsDecorator<TextView> {
 
 
     @Override
+    protected int[] styleable() {
+        return R.styleable.AutofitDecorator;
+    }
+
+    @Override
     protected int[] attrs() {
         return new int[]{ R.attr.decorAutofitText,
                           R.attr.decorSizeToFit,
@@ -59,9 +64,9 @@ public class AutofitDecorator extends AttrsDecorator<TextView> {
     }
 
     @Override
-    protected void apply(TextView view, DecorValue decorValue) {
+    protected void apply(TextView view, TypedArray typedArray) {
         mTextView = view;
-        boolean isAutofit = decorValue.getBoolean(R.attr.decorAutofitText);
+        boolean isAutofit = typedArray.getBoolean(R.styleable.AutofitDecorator_decorAutofitText, false);
         if(!isAutofit) return;
 
         float scaledDensity = mTextView.getContext().getResources().getDisplayMetrics().scaledDensity;
@@ -71,11 +76,11 @@ public class AutofitDecorator extends AttrsDecorator<TextView> {
 
         //TODO: deal with case when one of these values is absent
 
-        sizeToFit = decorValue.getBoolean(R.attr.decorSizeToFit, sizeToFit);
+        sizeToFit = typedArray.getBoolean(R.styleable.AutofitDecorator_decorSizeToFit, sizeToFit);
 
-        minTextSize = decorValue.getDimensionPixelSize(R.attr.decorMinTextSize, minTextSize);
+        minTextSize = typedArray.getDimensionPixelSize(R.styleable.AutofitDecorator_decorMinTextSize, minTextSize);
 
-        precision = decorValue.getFloat(R.attr.decorPrecision, precision);
+        precision = typedArray.getFloat(R.styleable.AutofitDecorator_decorPrecision, precision);
 
         mPaint = new TextPaint();
         setSizeToFit(sizeToFit);
