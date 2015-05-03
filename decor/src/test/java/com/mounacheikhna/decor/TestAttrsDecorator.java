@@ -9,6 +9,11 @@ import android.widget.TextView;
 public class TestAttrsDecorator extends AttrsDecorator<TextView> {
 
     @Override
+    protected int[] styleable() {
+        return R.styleable.DecorExample;
+    }
+
+    @Override
     protected int[] attrs() {
         return new int[] {R.attr.decorAttr};
     }
@@ -20,7 +25,12 @@ public class TestAttrsDecorator extends AttrsDecorator<TextView> {
 
     @Override
     protected void apply(TextView textView, DecorValue decorValue) {
-        Log.d("TestAttrsDecorator", "Test");
+        //Log.d("TestAttrsDecorator", "Test");
+        //textView.getContext().obtainStyledAttributes(
+                //R.styleable.DecorExample_decorAttr, R.attr.decorAttr;
+                //R.styleable.DecorExample, R.attr.decorAttr;
+        String decorStrValue = decorValue.parentArray.getString(R.styleable.DecorExample_decorAttr);
+
     }
 
 }

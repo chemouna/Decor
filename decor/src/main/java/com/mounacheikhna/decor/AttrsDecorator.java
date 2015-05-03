@@ -32,12 +32,15 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
         }
 
         values = obtainAttributes(context, attributeSet);
-        //attributeSet here represent the attributes in the xml for the view in which we have this decor
-        //(<ImageView android:layout_width=".." ... app:decorAttr1=".." />
-        //attrs() contains our own ids of decors = [decorAttr1, decorAttr2] (here f.ex ImageView has only one of the attribute)
-        if (values == null) {
+        //we should be using this public TypedArray obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)
+        //instead to apply also default styles and theme
+        //TODO: NOP this doesnt work wih styles set int styles.xml which probably means that they dont work through themes too
+
+        /*if (values == null) {
             return;
-        }
+        }*/
+
+        if(values == null || values.length() == 0) return;
 
         try {
             for (int i = 0; i < values.length(); i++) {
@@ -56,8 +59,20 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
     }
 
     TypedArray obtainAttributes(Context context, AttributeSet attributeSet) {
-        return context.getResources().obtainAttributes(attributeSet, attrs());
+        //return context.getResources().obtainAttributes(attributeSet, attrs());
+        return context.getTheme().obtainStyledAttributes(attributeSet, styleable(), 0, 0);
     }
+
+    /*static boolean isTypedArrayEmpty(TypedArray typedArray) {
+        for (int i = 0; i < typedArray.length(); i++) {
+            if(typedArray.getInt(i, -1) != 0) {
+                return false;
+            }
+        }
+        return true;
+    }*/
+
+    protected abstract int[] styleable();
 
     /**
      * Attributes supported by this decorator.
