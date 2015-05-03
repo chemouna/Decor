@@ -16,7 +16,6 @@ import android.util.TypedValue;
 import android.widget.TextView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 /**
  * A decorator for a TextView to resize it's text to be no larger than the width of the view.

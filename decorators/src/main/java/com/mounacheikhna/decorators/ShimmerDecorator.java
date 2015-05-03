@@ -4,7 +4,6 @@ import android.content.res.TypedArray;
 import android.widget.TextView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 /**
  * Created by cheikhna on 15/04/2015.

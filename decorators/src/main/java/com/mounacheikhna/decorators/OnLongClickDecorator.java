@@ -5,8 +5,6 @@ import android.content.res.TypedArray;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 
-import com.mounacheikhna.decor.DecorValue;
-
 /**
  * Created by cheikhna on 02/04/2015.
  */

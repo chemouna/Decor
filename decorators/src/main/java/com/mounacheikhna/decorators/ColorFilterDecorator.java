@@ -4,7 +4,6 @@ import android.content.res.TypedArray;
 import android.widget.ImageView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 
 /**

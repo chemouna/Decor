@@ -6,8 +6,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-import com.mounacheikhna.decor.DecorValue;
-
 /**
  * Created by cheikhna on 17/02/2015.
  */

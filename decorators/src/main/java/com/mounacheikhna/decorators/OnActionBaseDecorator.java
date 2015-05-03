@@ -1,13 +1,12 @@
 package com.mounacheikhna.decorators;
 
 import android.app.Activity;
-import android.util.TypedValue;
 import android.view.View;
+
+import com.mounacheikhna.decor.AttrsDecorator;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import com.mounacheikhna.decor.AttrsDecorator;
 
 
 /**

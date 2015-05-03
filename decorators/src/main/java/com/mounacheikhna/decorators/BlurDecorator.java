@@ -8,7 +8,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 import com.mounacheikhna.decorators.utils.BlurUtils;
 
 /**

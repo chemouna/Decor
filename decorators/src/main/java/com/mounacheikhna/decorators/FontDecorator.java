@@ -5,7 +5,6 @@ import android.graphics.Typeface;
 import android.widget.TextView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 
 public class FontDecorator extends AttrsDecorator<TextView> {

@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.widget.EditText;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 /**
  * Created by cheikhna on 09/02/2015.

@@ -10,7 +10,6 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 
 import com.mounacheikhna.decor.AttrsDecorator;
-import com.mounacheikhna.decor.DecorValue;
 
 /**
  * Created by mounacheikhna on 01/04/2015.

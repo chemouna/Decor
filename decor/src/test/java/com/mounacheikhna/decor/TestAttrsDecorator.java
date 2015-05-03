@@ -1,7 +1,6 @@
 package com.mounacheikhna.decor;
 
 import android.content.res.TypedArray;
-import android.util.Log;
 import android.widget.TextView;
 
 /**

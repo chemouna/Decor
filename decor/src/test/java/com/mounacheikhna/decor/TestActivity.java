@@ -8,6 +8,7 @@ import android.content.Context;
  */
 public class TestActivity extends Activity {
 
+
     private TestAttrsDecorator testAttrsDecorator;
 
     @Override
