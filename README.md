@@ -65,8 +65,8 @@ Binaries and dependency information for Maven, Ivy, Gradle and others can be fou
 
 for Gradle:
 ```groovy
-compile 'com.mounacheikhna:decor:0.2.2'
-compile 'com.mounacheikhna:decorators:0.2.2'
+compile 'com.mounacheikhna:decor:0.2.3'
+compile 'com.mounacheikhna:decorators:0.2.3'
 ```
 
 and for Maven:
@@ -75,20 +75,20 @@ and for Maven:
 <dependency>
     <groupId>com.mounacheikhna</groupId>
     <artifactId>decor</artifactId>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
 </dependency>
 <dependency>
     <groupId>com.mounacheikhna</groupId>
     <artifactId>decorators</artifactId>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
 </dependency>
 ```
 
 and for Ivy:
 
 ```xml
-<dependency org="com.mounacheikhna" name="decor" rev="0.2.2" />
-<dependency org="com.mounacheikhna" name="decorators" rev="0.2.2" />
+<dependency org="com.mounacheikhna" name="decor" rev="0.2.3" />
+<dependency org="com.mounacheikhna" name="decorators" rev="0.2.3" />
 ```
 
 Want to help?
