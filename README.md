@@ -3,6 +3,7 @@ Decor
 
 <a href='https://travis-ci.org/chemouna/Decor/builds/'><img src='https://travis-ci.org/chemouna/Decor.svg?branch=master'></a>
 
+<a href='http://android-arsenal.com/details/1/1773'><img src='https://img.shields.io/badge/Android%20Arsenal-Decor-brightgreen.svg?style=flat'></a>
 
 *Decor* is a library that applies decorators to android layout with additional attributes
 without the need to extend and create a custom view for each functionnality.
