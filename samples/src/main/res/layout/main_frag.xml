@@ -22,9 +22,6 @@
         android:layout_height="wrap_content"
         android:text="@string/textview_example"
         style="@style/decoratedEditText"/>
-        <!--app:decorErrorIcon="@drawable/ic_error_et"
-        app:decorErrorText="Error"
-        app:decorTypefaceAsset="Ubuntu-M.ttf"/>-->
 
     <Button
         android:layout_width="match_parent"
@@ -49,12 +46,11 @@
         app:decorColorFilter="@color/material_blue_grey_800"
         app:decorOnLongClick="onRobotLongClick"/>
 
-    <com.mounacheikhna.decor.samples.CustomTextView
-        android:id="@+id/ctv"
+    <!--<TextView
+        android:id="@+id/tv_with_theme_attr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I'm a custom textview"
-        app:decorTypefaceAsset="Ubuntu-M.ttf"/>
+        android:text="I'm a textview with a decor attribute set in theme attr"/>-->
 
     <com.mounacheikhna.decor.samples.CustomImageView
         android:id="@+id/customIv"
@@ -62,5 +58,11 @@
         android:layout_height="90dp"
         android:src="@drawable/ic_launcher"
         app:decorColorFilter="@color/material_blue_grey_800"/>
+
+    <ViewStub
+        android:id="@+id/stub_with_decor_attr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout="@layout/stub_with_custom_attributes"/>
 
 </LinearLayout>

@@ -3,7 +3,6 @@ package com.mounacheikhna.decor;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.SparseIntArray;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -42,17 +41,15 @@ public abstract class AttrsDecorator<T extends View> implements Decorator {
     }
 
     TypedArray obtainAttributes(Context context, AttributeSet attributeSet) {
-        return context.getTheme().obtainStyledAttributes(attributeSet, styleable(), 0, 0);
+        //TODO: instead of always passing 0 here for defStyleAttr : make it accept theme setted attribute
+        return context.getTheme().obtainStyledAttributes(attributeSet, styleable(), defStyleAttr(), 0);
     }
 
     protected abstract int[] styleable();
 
-    /**
-     * Attributes supported by this decorator.
-     *
-     * @return a non-null array of android attr resource ids.
-     */
-    //protected abstract int[] attrs();
+    protected int defStyleAttr() {
+        return 0;
+    }
 
     /**
      * The class for the given viewtype. Please be kind and just return the right class here :)

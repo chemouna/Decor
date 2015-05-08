@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppTheme" parent="android:style/Theme.Holo.Light">
+        <!--<item name="decorTypefaceAsset">"Ubuntu-M.ttf"</item>-->
+    </style>
+
     <style name="decoratedEditText">
         <item name="decorErrorIcon">@drawable/ic_error_et</item>
         <item name="decorErrorText">"Error"</item>

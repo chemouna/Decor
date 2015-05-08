@@ -2,4 +2,6 @@
 <resources>
     <string name="app_label">Pretty samples</string>
     <string name="textview_example">Hi, I\'m a TextView with a different font</string>
+    <string name="text_without_decor_attr">Test stub without decor attribute</string>
+    <string name="text_with_custom_attr">Text with decor attribute</string>
 </resources>

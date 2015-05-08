@@ -27,20 +27,27 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
     private boolean mSetPrivateFactory = false;
     private Field mConstructorArgs = null;
 
-    public DecorLayoutInflater(LayoutInflater original, Context newContext, Collection<Decorator> decorators) {
+    protected DecorLayoutInflater(Context context, Collection<Decorator> decorators) {
+        super(context);
+        mDecorators = decorators;
+        mDecorFactory = new DecorFactory(mDecorators);
+        initLayoutFactories(false);
+    }
+
+    protected DecorLayoutInflater(LayoutInflater original, Context newContext, Collection<Decorator> decorators, final boolean isCloned) {
         super(original, newContext);
         mDecorators = decorators;
         mDecorFactory = new DecorFactory(mDecorators);
-        initLayoutFactories();
+        initLayoutFactories(isCloned);
     }
 
     @Override
     public LayoutInflater cloneInContext(Context newContext) {
-        return new DecorLayoutInflater(this, newContext, mDecorators);
+        return new DecorLayoutInflater(this, newContext, mDecorators, true);
     }
 
-    
-    private void initLayoutFactories() {
+    private void initLayoutFactories(final boolean isCloned) {
+        if (isCloned) return;
         // If we are HC+ we get and set Factory2 otherwise we just wrap Factory1
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             if (getFactory2() != null && !(getFactory2() instanceof WrapperFactory2)) {

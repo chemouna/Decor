@@ -19,6 +19,11 @@ public class FontDecorator extends AttrsDecorator<TextView> {
         return TextView.class;
     }
 
+   /* @Override
+    protected int defStyleAttr() {
+        return R.attr.decorTypefaceAsset;
+    }*/
+
     @Override
     protected void apply(TextView view, TypedArray typedArray) {
         String typefacePath = typedArray.getString(R.styleable.FontDecorator_decorTypefaceAsset);
