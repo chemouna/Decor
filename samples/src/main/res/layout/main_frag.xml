@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="12dp"
-    app:decorColorDescendents="true">
+    app:decorColorDescendents="true"
+    tools:ignore="MissingPrefix">
 
     <include layout="@layout/api_dependent_layout" />
 
