@@ -29,7 +29,7 @@ protected void attachBaseContext(Context newBase) {
         android:text="I'm a TextView"
         app:decorTypefaceAsset="Ubuntu-M.ttf"
         app:decorAutoFit="true"
-        app:decorAnimate="true"/>
+        app:decorAnimateSearch="true"/>
 ```
 
 This has the advantage of reusing these decorators in other views.
