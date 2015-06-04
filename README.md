@@ -24,14 +24,17 @@ protected void attachBaseContext(Context newBase) {
 ```
 ```xml
  <TextView
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="I'm a TextView"
         app:decorTypefaceAsset="Ubuntu-M.ttf"
-        app:decorAutoFit="true"/>
+        app:decorAutoFit="true"
+        tools:ignore="MissingPrefix"/>
 ```
 or with an Imageview : 
 <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/search"
     android:layout_gravity="center"
@@ -58,6 +61,8 @@ Check the samples for a working example :
 
 ![](images/decor_sample.png)
 
+
+Android Studio (lint) will likely mark this xml with a warning despite being correct. You may want to add tools:ignore="MissingPrefix" to either the View itself or its parent ViewGroup to get rid of it. Also add tools namespace xmlns:tools=" http://schemas.android.com/tools" to have access to "ignore" attribute
 
 Binaries
 ========
