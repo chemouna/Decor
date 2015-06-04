@@ -28,10 +28,18 @@ protected void attachBaseContext(Context newBase) {
         android:layout_height="wrap_content"
         android:text="I'm a TextView"
         app:decorTypefaceAsset="Ubuntu-M.ttf"
-        app:decorAutoFit="true"
-        app:decorAnimateSearch="true"/>
+        app:decorAutoFit="true"/>
 ```
-
+or with an Imageview : 
+<ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search"
+    android:layout_gravity="center"
+    android:layout_width="150dp"
+    android:layout_height="24dp"
+    android:src="@drawable/search_vector_drawable"
+    app:decorAnimateSearch="true" />
+    
 This has the advantage of reusing these decorators in other views.
 The module decorators contains some examples of useful decorators that you can start using now,
 or write your own by extending ``` AttrsDecorator<T>``` where T is the type of the view the decor will be applied on.
