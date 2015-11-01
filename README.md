@@ -3,15 +3,15 @@ Decor
 
 <a href='http://android-arsenal.com/details/1/1773'><img src='https://img.shields.io/badge/Android%20Arsenal-Decor-brightgreen.svg?style=flat'></a>
 
-*Decor* is a library that applies decorators to android layout with additional attributes
-without the need to extend and create a custom view for each functionnality.
+*Decor* is a library that applies decorators to Android layout with additional attributes
+without the need to extend and create a custom View for each functionality.
 
-Decor plugs into Android layout inflation and applies custom attributes to views.
+Decor plugs into Android's layout inflation and applies custom attributes to Views.
 
-If you have written a custom view like AutofitTextViewWithFont : to make a textview resizes it's text and have a specific font
-and if you want to animate it you can write a custom view like AnimatedAutofitTextViewWithFont and if there's another runtime
-custom attribute you want to add you will have to yet create another custom view.
- Decor comes to the rescue to solve this unnecessary class explosion by using a seperate decorator for each functionality :
+If you have written a custom View like AutofitTextViewWithFont : to make a TextView resize it's text and have a specific font
+and if you want to animate it you can write a custom View like AnimatedAutofitTextViewWithFont and if there's another runtime
+custom attribute you want to add you will have to yet create another custom View.
+ Decor comes to the rescue to solve this unnecessary class explosion by using a separate decorator for each functionality :
     : AutoFitDecorator , FontDecorator, AnimateDecorator (See decorators module for examples of how to create a decorator)
      and register them in attachBaseContext :
      
@@ -32,7 +32,7 @@ protected void attachBaseContext(Context newBase) {
         app:decorAutoFit="true"
         tools:ignore="MissingPrefix"/>
 ```
-or with an Imageview : 
+or with an ImageView : 
 <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,9 +43,9 @@ or with an Imageview :
     android:src="@drawable/search_vector_drawable"
     app:decorAnimateSearch="true" />
     
-This has the advantage of reusing these decorators in other views.
+This has the advantage of reusing these decorators in other Views.
 The module decorators contains some examples of useful decorators that you can start using now,
-or write your own by extending ``` AttrsDecorator<T>``` where T is the type of the view the decor will be applied on.
+or write your own by extending ``` AttrsDecorator<T>``` where T is the type of the View the decor will be applied on.
 
 If you want to apply only a subset of decorators :
 
@@ -62,7 +62,7 @@ Check the samples for a working example :
 ![](images/decor_sample.png)
 
 
-Android Studio (lint) will likely mark this xml with a warning despite being correct. You may want to add tools:ignore="MissingPrefix" to either the View itself or its parent ViewGroup to get rid of it. Also add tools namespace xmlns:tools=" http://schemas.android.com/tools" to have access to "ignore" attribute
+Android Studio (lint) will likely mark this XML with a warning despite being correct. You may want to add tools:ignore="MissingPrefix" to either the View itself or its parent ViewGroup to get rid of it. Also add tools namespace xmlns:tools="http://schemas.android.com/tools" to have access to "ignore" attribute.
 
 Binaries
 ========
