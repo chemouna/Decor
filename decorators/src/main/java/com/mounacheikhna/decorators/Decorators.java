@@ -21,7 +21,8 @@ public final class Decorators {
             new BlurDecorator(),
             new ColorFilterDecorator(),
             new ErrorDecorator(),
-            new FontDecorator()
+            new FontDecorator(),
+            new ReloadTextDecorator()
         };
     }
 

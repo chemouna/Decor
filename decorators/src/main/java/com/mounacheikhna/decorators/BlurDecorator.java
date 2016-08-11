@@ -30,7 +30,7 @@ public class BlurDecorator extends AttrsDecorator<View> {
         boolean isBlur = typedArray.getBoolean(R.styleable.BlurDecorator_decorBlur, false);
         if(!isBlur || Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) return;
 
-        //i'm guessing this part here doesnt work because i'm using the same blur as ngAndroid and they are
+        //i'm guessing this part here doesn't work because i'm using the same blur as ngAndroid and they are
         //doing their injection in a different point in the inflation
         ViewGroup parent = (ViewGroup) view.getParent();
         FrameLayout layout = new FrameLayout(view.getContext());

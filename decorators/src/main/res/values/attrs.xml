@@ -7,6 +7,10 @@
         <attr name="decorTypefaceAsset" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="ReloadTextDecorator">
+        <attr name="decorReload" format="boolean" />
+    </declare-styleable>
+
     <declare-styleable name="ErrorDecorator">
         <attr name="decorErrorText" format="string" />
         <attr name="decorErrorIcon" format="reference" />

@@ -23,11 +23,11 @@ android {
 
 dependencies {
 
-    /*compile project(':decor')
-    compile project(':decorators')*/
+    compile project(':decor')
+    compile project(':decorators')
 
-    compile 'com.mounacheikhna:decor:0.2.4'
-    compile 'com.mounacheikhna:decorators:0.2.4'
+    /*compile 'com.mounacheikhna:decor:0.2.4'
+    compile 'com.mounacheikhna:decorators:0.2.4'*/
 
     compile "com.android.support:support-v4:${project.ANDROID_SUPPORT_VERSION}"
 }
