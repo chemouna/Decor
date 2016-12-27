@@ -135,6 +135,7 @@ public class DecorLayoutInflater extends LayoutInflater implements DecorActivity
         for (String prefix : CLASS_PREFIX_LIST) {
             try {
                 view = createView(name, prefix, attrs);
+                if (view != null) break;
             } catch (ClassNotFoundException ignored) {
             }
         }
