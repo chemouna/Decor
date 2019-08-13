@@ -1,4 +1,0 @@
-status = [
-  "ci/circleci: test"
-]
-
