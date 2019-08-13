@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/android:api-29-alpha
 
     working_directory: ~/repo
 
@@ -20,7 +20,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      # - run: gradle dependencies
+      - run: gradle dependencies
 
       - save_cache:
           paths:
