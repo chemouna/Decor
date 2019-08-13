@@ -29,5 +29,5 @@ dependencies {
     /*compile 'com.mounacheikhna:decor:0.2.4'
     compile 'com.mounacheikhna:decorators:0.2.4'*/
 
-    compile "com.android.support:support-v4:${project.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:support-v4:+"
 }
