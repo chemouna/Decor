@@ -1,0 +1,5 @@
+status = [
+  "ci/circleci: build"
+]
+required_approvals = 0
+timeout_sec = 14400
