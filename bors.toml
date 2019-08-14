@@ -2,3 +2,4 @@ status = [
   "ci/circleci: test"
 ]
 required_approvals = 0
+timeout_sec = 14400
