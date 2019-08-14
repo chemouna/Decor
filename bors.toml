@@ -1,3 +1,4 @@
 status = [
   "ci/circleci: test"
 ]
+required_approvals = 0
